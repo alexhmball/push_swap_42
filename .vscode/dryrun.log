@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/ballzball/Desktop/cursus/push_swap'
+make bonus -C libft
+gcc -g -Wall -Wextra -Werror main.c libft/libft.a -o push_swap
+make: Leaving directory '/home/ballzball/Desktop/cursus/push_swap'
+ 
