@@ -6,12 +6,13 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:33:49 by aball             #+#    #+#             */
-/*   Updated: 2022/01/27 16:48:04 by aball            ###   ########.fr       */
+/*   Updated: 2022/06/17 19:15:41 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+//function that converts a string to an integer
 int	ft_atoi(const char *str)
 {
 	int	s;
