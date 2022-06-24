@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:23:05 by aball             #+#    #+#             */
-/*   Updated: 2022/06/24 17:23:06 by aball            ###   ########.fr       */
+/*   Updated: 2022/06/24 21:10:44 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,10 @@ void	lst_add_front(t_listy **lst, t_listy *new)
 {
 	if (!lst)
 		return ;
-	new->next = *lst;
+	if (!*lst)
+		new->next = NULL;
+	else
+		new->next = *lst;
 	*lst = new;
 }
 
