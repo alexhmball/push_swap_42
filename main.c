@@ -6,20 +6,21 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 22:30:30 by aball             #+#    #+#             */
-/*   Updated: 2022/06/24 16:52:32 by aball            ###   ########.fr       */
+/*   Updated: 2022/06/24 18:32:52 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_listy	*create_list(int *nums)
+static t_listy	**create_list(int *nums)
 {
-	int	i;
-	t_listy **head;
-	t_listy *current;
+	int		i;
+	t_listy	**head;
+	t_listy	*current;
 	t_listy	*temp;
 
 	i = 0;
+	head = (t_listy **)malloc(sizeof(t_listy **));
 	head = &current;
 	current = new_lst(nums[i], i);
 	lst_add_back(head, current);
@@ -32,13 +33,34 @@ static t_listy	*create_list(int *nums)
 		lst_add_back(head, current);
 		i++;
 	}
-	return (temp);
+	return (head);
+}
+
+static void	check_and_error(int *numbers)
+{
+	int	i;
+	int	x;
+
+	i = 0;
+	while (numbers[i])
+	{
+		x = i + 1;
+		while (numbers[x])
+		{
+			if (numbers[i] == numbers[x])
+			{
+				free(numbers);
+				print_error(3);
+			}
+			x++;
+		}
+		i++;
+	}
 }
 
 static int	*check_duplicates(char **nums)
 {
 	int	i;
-	int	x;
 	int	*numbers;
 
 	i = 0;
@@ -53,27 +75,13 @@ static int	*check_duplicates(char **nums)
 		numbers[i] = ft_atoi(nums[i]);
 		i++;
 	}
-	i = 0;
-	while (numbers[i])
-	{
-		x = i + 1;
-		while (numbers[x])
-		{
-			if (numbers[i] == numbers[x])
-			{
-				free (numbers);
-				print_error(3);
-			}
-			x++;
-		}
-		i++;
-	}
+	check_and_error(numbers);
 	return (numbers);
 }
 
 static char	*error_handler(int ac, char **av, char *nums)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	if (ac < 2)
@@ -94,26 +102,31 @@ static char	*error_handler(int ac, char **av, char *nums)
 	return (nums);
 }
 
+void	print_list(t_listy *lst)
+{
+	while (lst)
+	{
+		// ft_printf("%d\n", lst->content);
+		lst = lst->next;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	char	*nums;
 	char	**only_nums;
 	int		*numbers;
-	t_listy	*a;
-	// t_listy	*b;
+	t_listy	**a;
+	t_listy	*temp;
 
-	a = (t_listy *)malloc(sizeof(t_listy *));
 	nums = NULL;
 	nums = error_handler(ac, av, nums);
 	only_nums = ft_split(nums, ' ');
 	free (nums);
 	numbers = check_duplicates(only_nums);
 	a = create_list(numbers);
-	while (a)
-	{
-		ft_printf("%d\n", a->content);
-		a = a->next;
-	}
-	sorting(a);
+	temp = *a;
+	print_list(temp);
+	sorting(*a);
 	return (0);
 }
