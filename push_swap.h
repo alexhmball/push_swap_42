@@ -7,9 +7,15 @@ typedef struct s_listy
 {
 	int				content;
 	int				index;
-	struct s_list	*next;
+	struct s_listy	*next;
 }				t_listy;
 
 void print_error(int flag);
+t_listy *new_lst(int content, int index);
+void lst_add_front(t_listy **lst, t_listy *new);
+void lst_add_back(t_listy **lst, t_listy *node);
+t_listy	*push_b(t_listy **a_head, t_listy **b_head, t_listy *node);
+void sorting(t_listy *a);
+int lst_size(t_listy *lst);
 
 #endif

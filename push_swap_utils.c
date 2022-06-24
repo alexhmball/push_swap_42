@@ -9,46 +9,76 @@ void	print_error(int flag)
 		error = "Error\nPlease enter only numbers\n";
 		write(2, error, ft_strlen(error));
 	}
+	if (flag == 2)
+	{
+		error = "Error\nPlease provide numbers to sort\n";
+		write(2, error, ft_strlen(error));
+	}
+	if (flag == 3)
+	{
+		error = "Error\nPlease remove duplicate numbers\n";
+		write(2, error, ft_strlen(error));
+	}
+	exit (1);
 }
 
-// //create a new node
-// t_listy	new_lst(int content, int index)
-// {
-// 	t_listy	new;
+int	lst_size(t_listy *lst)
+{
+	int i;
 
-// 	new.content = content;
-// 	new.index = index;
-// 	new.next = NULL;
-// 	return (new);
-// }
+	i = 0;
+	if (!lst)
+		return (0);
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
+}
 
-// //adds a new node to the end of the list
-// void	lst_add_front(t_listy **lst, t_listy *new)
-// {
-// 	if (!lst)
-// 		return ;
-// 	new->next = *lst;
-// 	*lst = new;
-// }
 
-// //adds a node to the front of the list
-// void	lst_add_back(t_listy **lst, t_listy *node)
-// {
-// 	t_listy *temp;
+//create a new node
+t_listy	*new_lst(int content, int index)
+{
+	t_listy	*new;
 
-// 	temp = lst;
-// 	if (!lst)
-// 		return ;
-// 	if (!*lst)
-// 	{
-// 		*lst = node;
-// 		node->next = NULL;
-// 		return;
-// 	}
-// 	while (temp->next)
-// 	{
-// 		temp = temp->next;
-// 	}
-// 	temp->next = node;
-// 	node->next = NULL;
-// }
+	new = (t_listy *)malloc(sizeof(t_listy));
+	if (!new)
+		return (0);
+	new->content = content;
+	new->index = index;
+	new->next = NULL;
+	return (new);
+}
+
+//adds a new node to the end of the list
+void	lst_add_front(t_listy **lst, t_listy *new)
+{
+	if (!lst)
+		return ;
+	new->next = *lst;
+	*lst = new;
+}
+
+//adds a node to the front of the list
+void	lst_add_back(t_listy **lst, t_listy *node)
+{
+	t_listy *temp;
+
+	temp = *lst;
+	if (!lst)
+		return ;
+	if (!*lst)
+	{
+		*lst = node;
+		node->next = NULL;
+		return;
+	}
+	while (temp->next)
+	{
+		temp = temp->next;
+	}
+	temp->next = node;
+	node->next = NULL;
+}

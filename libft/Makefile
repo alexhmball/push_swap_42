@@ -6,7 +6,7 @@
 #    By: aball <aball@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 14:07:38 by aball             #+#    #+#              #
-#    Updated: 2022/06/18 00:50:55 by aball            ###   ########.fr        #
+#    Updated: 2022/06/24 14:40:54 by aball            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,4 +61,4 @@ fclean:	clean
 
 re:		fclean all
 
-.PHONY: fclean all bonus re clean printf_make
+.PHONY: fclean all bonus re clean
