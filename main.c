@@ -6,13 +6,13 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 22:30:30 by aball             #+#    #+#             */
-/*   Updated: 2022/06/24 21:22:47 by aball            ###   ########.fr       */
+/*   Updated: 2022/07/01 23:32:57 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_listy	**create_list(int *nums)
+static t_listy	**create_list(int *nums, int ac)
 {
 	int		i;
 	t_listy	**head;
@@ -31,6 +31,23 @@ static t_listy	**create_list(int *nums)
 		head = &temp;
 		current = new_lst(nums[i], i);
 		lst_add_back(head, current);
+		i++;
+	}
+	nums = pre_sort(nums, ac);
+	i = 0;
+	current = *head;
+	while (nums[i])
+	{
+		current = *head;
+		while (current)
+		{
+			if (current->content == nums[i])
+			{
+				current->index = i;
+				break;
+			}
+			current = current->next;
+		}
 		i++;
 	}
 	return (head);
@@ -102,31 +119,23 @@ static char	*error_handler(int ac, char **av, char *nums)
 	return (nums);
 }
 
-void	print_list(t_listy *lst)
-{
-	while (lst)
-	{
-		// ft_printf("%d\n", lst->content);
-		lst = lst->next;
-	}
-}
-
 int	main(int ac, char **av)
 {
 	char	*nums;
 	char	**only_nums;
 	int		*numbers;
 	t_listy	**a;
-	t_listy	*temp;
+	t_listy *temp;
 
 	nums = NULL;
 	nums = error_handler(ac, av, nums);
 	only_nums = ft_split(nums, ' ');
 	free (nums);
 	numbers = check_duplicates(only_nums);
-	a = create_list(numbers);
+	a = create_list(numbers, ac - 1);
+	ac /= 2;
+	// ft_printf("%d\n", ac);
+	sorting(*a, ac);
 	temp = *a;
-	print_list(temp);
-	sorting(*a);
 	return (0);
 }

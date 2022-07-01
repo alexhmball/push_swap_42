@@ -3,6 +3,6 @@ make: Entering directory `/Users/aball/Desktop/Cursus/push_swap/push_swap_experi
 make -C libft
 make bonus -C libft
  
-gcc -g -Wall -Wextra -Werror libft/libft.a push_swap_utils.c main.c sorting.c -o push_swap
+gcc -g -Wall -Wextra -Werror libft/libft.a push_swap_utils.c main.c sorting.c push.c swap.c rotate.c  -o push_swap
 make: Leaving directory `/Users/aball/Desktop/Cursus/push_swap/push_swap_experimental'
  

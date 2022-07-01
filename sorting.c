@@ -6,69 +6,77 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:48 by aball             #+#    #+#             */
-/*   Updated: 2022/06/24 21:20:16 by aball            ###   ########.fr       */
+/*   Updated: 2022/07/01 23:33:55 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_listy	**push_b(t_listy **a_head, t_listy **b_head)
+int	*pre_sort(int *nums, int ac)
 {
-	t_listy	*temp_a;
-	// t_listy	*temp_b;
+	int	i;
+	int	x;
+	int temp;
 
-	if (!a_head || !b_head)
-		ft_printf("you lost something in push_b\n");
-	// temp_b = *a_head;
-	temp_a = *a_head;
-	temp_a = temp_a->next;
-	lst_add_front(b_head, *a_head);
-	ft_printf("pb\n");
-	a_head = &temp_a;
-	return (a_head);
-	// b_head = &temp_b;
+	i = 0;
+	while (i < ac)
+	{
+		x = 0;
+		while (x < ac)
+		{
+			if (nums[i] < nums[x])
+			{
+				temp = nums[i];
+				nums[i] = nums[x];
+				nums[x] = temp;
+			}
+			x++;
+		}
+		i++;
+	}
+	i = 0;
+	// while (nums[i])
+	// {
+	// 	ft_printf("%d", nums[i++]);
+	// }
+	return (nums);
 }
 
-void	push_a(t_listy **a_head, t_listy **b_head)
-{
-	t_listy	*temp_a;
-	t_listy	*temp_b;
-
-	if(!a_head)
-		ft_printf("you lost a_head in push_a\n");
-	if (!b_head)
-		ft_printf("you lost b_head in push_a\n");
-	temp_b = *b_head;
-	temp_a = *b_head;
-	if (!temp_b->next)
-		temp_b = NULL;
-	else
-		temp_b = temp_b->next;
-	lst_add_front(a_head, *b_head);
-	ft_printf("pa\n");
-	b_head = &temp_b;
-	a_head = &temp_a;
-}
-
-void	sorting(t_listy *a)
+void	sorting(t_listy *a, int size)
 {
 	t_listy	**b;
-	t_listy	**a_h;
 	t_listy	*current;
 
 	b = (t_listy **)malloc(sizeof(t_listy **));
-	*b = NULL;
-	a_h = &a;
-	a_h = push_b(a_h, b);
-	free (a);
-	push_a(a_h, b);
-	current = *a_h;
+	current = a;
 	while (current)
 	{
-		// printf("%d\n", current->content);
+		if (current->index < size)
+			push_b(&a, b);
+		else
+			rotate(&a);
 		current = current->next;
 	}
-	// current = *b;
-	// while(current)
-	// 	current = current->next;
+	// push_b(&a, b);
+	// push_b(&a, b);
+	// push_a(&a, b);
+	// swap(&a);
+	// rotate(&a);
+	// rev_rotate(&a);
+	current = a;
+	ft_printf("a  i\n");
+	while (current)
+	{
+		ft_printf("%d  ", current->content);
+		ft_printf("%d\n", current->index);
+		current = current->next;
+	}
+	current = *b;
+	printf("\nb  i\n");
+	while(current)
+	{
+		ft_printf("%d  ", current->content);
+		ft_printf("%d\n", current->index);
+		current = current->next;
+	}
 }

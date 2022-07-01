@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:55 by aball             #+#    #+#             */
-/*   Updated: 2022/06/24 21:20:03 by aball            ###   ########.fr       */
+/*   Updated: 2022/07/01 23:24:05 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,14 @@ void	print_error(int flag);
 t_listy	*new_lst(int content, int index);
 void	lst_add_front(t_listy **lst, t_listy *new);
 void	lst_add_back(t_listy **lst, t_listy *node);
-t_listy	**push_b(t_listy **a_head, t_listy **b_head);
+void	push_b(t_listy **a_head, t_listy **b_head);
 void	push_a(t_listy **a_head, t_listy **b_head);
-void	sorting(t_listy *a);
-int	lst_size(t_listy *lst);
+void	sorting(t_listy *a, int size);
+int		lst_size(t_listy *lst);
+void	delone(t_listy *lst, void (*del)(void *));
+void	swap(t_listy **head);
+void	rotate(t_listy **head);
+void	rev_rotate(t_listy **head);
+int		*pre_sort(int *nums, int ac);
 
 #endif
