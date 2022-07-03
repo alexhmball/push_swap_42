@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:55 by aball             #+#    #+#             */
-/*   Updated: 2022/07/01 23:24:05 by aball            ###   ########.fr       */
+/*   Updated: 2022/07/03 20:55:30 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,10 @@ void	swap(t_listy **head);
 void	rotate(t_listy **head);
 void	rev_rotate(t_listy **head);
 int		*pre_sort(int *nums, int ac);
+int		is_sorted_a(t_listy **a_head);
+int		is_sorted_b(t_listy **b_head);
+void	sort_algo(t_listy **a_head, t_listy **b_head);
+t_listy	*lst_last(t_listy *lst);
+void	sort_three(t_listy **a);
 
 #endif

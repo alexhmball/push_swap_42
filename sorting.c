@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:48 by aball             #+#    #+#             */
-/*   Updated: 2022/07/01 23:33:55 by aball            ###   ########.fr       */
+/*   Updated: 2022/07/03 23:05:25 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,6 @@ int	*pre_sort(int *nums, int ac)
 		}
 		i++;
 	}
-	i = 0;
-	// while (nums[i])
-	// {
-	// 	ft_printf("%d", nums[i++]);
-	// }
 	return (nums);
 }
 
@@ -46,37 +41,71 @@ void	sorting(t_listy *a, int size)
 {
 	t_listy	**b;
 	t_listy	*current;
+	int		i;
 
 	b = (t_listy **)malloc(sizeof(t_listy **));
+	i = 0;
 	current = a;
-	while (current)
+	if (size == 2 && is_sorted_a(&a) == 0)
 	{
-		if (current->index < size)
+		swap(&a);
+		ft_printf("sa\n");
+	}
+	if (size == 3)
+		sort_three(&a);
+	// else if (size == 4)
+	// 	sort_four(a, b);
+	// else if (size == 5)
+	// 	sort_five(a, b);
+	if (is_sorted_a(&a) == 1)
+		return ;
+	while (i < size)
+	{
+		if (current->index < size / 2)
+		{
 			push_b(&a, b);
+			current = current->next;
+			ft_printf("pb\n");
+		}
 		else
+		{
+			current = current->next;
 			rotate(&a);
-		current = current->next;
+			ft_printf("ra\n");
+		}
+		i++;
 	}
-	// push_b(&a, b);
-	// push_b(&a, b);
-	// push_a(&a, b);
-	// swap(&a);
-	// rotate(&a);
-	// rev_rotate(&a);
-	current = a;
-	ft_printf("a  i\n");
-	while (current)
-	{
-		ft_printf("%d  ", current->content);
-		ft_printf("%d\n", current->index);
-		current = current->next;
-	}
-	current = *b;
-	printf("\nb  i\n");
-	while(current)
-	{
-		ft_printf("%d  ", current->content);
-		ft_printf("%d\n", current->index);
-		current = current->next;
-	}
+	// current = a;
+	// ft_printf("a  i\n");
+	// while (current)
+	// {
+	// 	ft_printf("%d  ", current->content);
+	// 	ft_printf("%d\n", current->index);
+	// 	current = current->next;
+	// }
+	// current = *b;
+	// printf("\nb  i\n");
+	// while (current)
+	// {
+	// 	ft_printf("%d  ", current->content);
+	// 	ft_printf("%d\n", current->index);
+	// 	current = current->next;
+	// }
+	sort_algo(&a, b);
+	// current = a;
+	// ft_printf("a  i\n");
+	// while (current)
+	// {
+	// 	ft_printf("%d  ", current->content);
+	// 	ft_printf("%d\n", current->index);
+	// 	current = current->next;
+	// }
+	// current = *b;
+	// printf("\nb  i\n");
+	// while(current)
+	// {
+	// 	ft_printf("%d  ", current->content);
+	// 	ft_printf("%d\n", current->index);
+	// 	current = current->next;
+	// }
 }

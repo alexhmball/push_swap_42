@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:23:05 by aball             #+#    #+#             */
-/*   Updated: 2022/07/01 21:18:17 by aball            ###   ########.fr       */
+/*   Updated: 2022/07/02 20:46:05 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,11 @@ void	lst_add_back(t_listy **lst, t_listy *node)
 	node->next = NULL;
 }
 
-void delone(t_listy *lst, void (*del)(void *))
+t_listy *lst_last(t_listy *lst)
 {
-	if (lst)
-	{
-		del(&lst->content);
-		free(lst);
-	}
+	if (!lst)
+		return (0);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }

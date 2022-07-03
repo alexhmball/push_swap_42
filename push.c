@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 19:45:41 by aball             #+#    #+#             */
-/*   Updated: 2022/07/01 23:28:33 by aball            ###   ########.fr       */
+/*   Updated: 2022/07/03 18:52:10 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void push_b(t_listy **a_head, t_listy **b_head)
 	if (temp_a->next)
 		*a_head = temp_a->next;
 	lst_add_front(b_head, new_lst(temp_a->content, temp_a->index));
-	// delone(temp_a, free);
+	free(temp_a);
 }
 
 void push_a(t_listy **a_head, t_listy **b_head)
@@ -36,6 +36,5 @@ void push_a(t_listy **a_head, t_listy **b_head)
 	temp_b = *b_head;
 	*b_head = temp_b->next;
 	lst_add_front(a_head, new_lst(temp_b->content, temp_b->index));
-	// delone(temp_b, free);
 	free(temp_b);
 }

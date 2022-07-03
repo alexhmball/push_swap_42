@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 22:30:30 by aball             #+#    #+#             */
-/*   Updated: 2022/07/01 23:32:57 by aball            ###   ########.fr       */
+/*   Updated: 2022/07/03 23:26:44 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static t_listy	**create_list(int *nums, int ac)
 		}
 		i++;
 	}
+	current = *head;
 	return (head);
 }
 
@@ -125,17 +126,15 @@ int	main(int ac, char **av)
 	char	**only_nums;
 	int		*numbers;
 	t_listy	**a;
-	t_listy *temp;
 
 	nums = NULL;
 	nums = error_handler(ac, av, nums);
+	ac = ft_strlen(nums) / 2;
+	ac++;
 	only_nums = ft_split(nums, ' ');
 	free (nums);
 	numbers = check_duplicates(only_nums);
-	a = create_list(numbers, ac - 1);
-	ac /= 2;
-	// ft_printf("%d\n", ac);
+	a = create_list(numbers, ac);
 	sorting(*a, ac);
-	temp = *a;
 	return (0);
 }
