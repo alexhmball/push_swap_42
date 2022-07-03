@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:35:21 by aball             #+#    #+#             */
-/*   Updated: 2022/07/03 19:54:12 by aball            ###   ########.fr       */
+/*   Updated: 2022/07/04 00:09:01 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	sort_lst(t_listy **a, t_listy **b)
 		{
 			temp_a = temp_a->next;
 			rotate(a);
-			ft_printf("ra");
+			ft_printf("ra\n");
 		}
 		else if (temp_b->index < temp_b->next->index && temp_a->index > temp_a->next->index)
 		{

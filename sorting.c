@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:48 by aball             #+#    #+#             */
-/*   Updated: 2022/07/03 23:05:25 by aball            ###   ########.fr       */
+/*   Updated: 2022/07/04 00:09:40 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	sorting(t_listy *a, int size)
 	// 	sort_five(a, b);
 	if (is_sorted_a(&a) == 1)
 		return ;
-	while (i < size)
+	while (i < size && is_sorted_a(&a) == 0)
 	{
 		if (current->index < size / 2)
 		{
