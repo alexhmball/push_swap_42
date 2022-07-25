@@ -6,11 +6,27 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 22:30:30 by aball             #+#    #+#             */
-/*   Updated: 2022/07/03 23:26:44 by aball            ###   ########.fr       */
+/*   Updated: 2022/07/25 22:59:17 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	count_nums(char *nums)
+{
+	int	i;
+	int	size;
+
+	i = 0;
+	size = 0;
+	while (nums[i])
+	{
+		if (nums[i] == ' ')
+			size++;
+		i++;
+	}
+	return (size);
+}
 
 static t_listy	**create_list(int *nums, int ac)
 {
@@ -26,7 +42,7 @@ static t_listy	**create_list(int *nums, int ac)
 	lst_add_back(head, current);
 	temp = *head;
 	i++;
-	while (nums[i])
+	while (i < ac)
 	{
 		head = &temp;
 		current = new_lst(nums[i], i);
@@ -36,17 +52,15 @@ static t_listy	**create_list(int *nums, int ac)
 	nums = pre_sort(nums, ac);
 	i = 0;
 	current = *head;
-	while (nums[i])
+	while (i < ac)
 	{
 		current = *head;
 		while (current)
 		{
 			if (current->content == nums[i])
-			{
 				current->index = i;
-				break;
-			}
 			current = current->next;
+			// ft_printf("%d ", current->content);
 		}
 		i++;
 	}
@@ -108,6 +122,7 @@ static char	*error_handler(int ac, char **av, char *nums)
 		exit (1);
 	}
 	nums = str_sep(ac - 1, av + 1, " ");
+	// ft_printf("|%s|\n", nums);
 	while (nums[i])
 	{
 		if (ft_isdigit(nums[i]) == 0 && nums[i] != ' ' && nums[i] != '-')
@@ -129,8 +144,7 @@ int	main(int ac, char **av)
 
 	nums = NULL;
 	nums = error_handler(ac, av, nums);
-	ac = ft_strlen(nums) / 2;
-	ac++;
+	ac = count_nums(nums) + 1;
 	only_nums = ft_split(nums, ' ');
 	free (nums);
 	numbers = check_duplicates(only_nums);

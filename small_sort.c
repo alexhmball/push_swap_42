@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 20:18:57 by aball             #+#    #+#             */
-/*   Updated: 2022/07/03 23:43:07 by aball            ###   ########.fr       */
+/*   Updated: 2022/07/25 21:32:52 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	sort_three(t_listy **a)
 
 	temp_a = *a;
 	if (is_sorted_a(a))
-		return ;
+		exit (0);
 	if (lst_last(*a)->index == 0)
 	{
 		if (temp_a->index == 2)
@@ -28,15 +28,13 @@ void	sort_three(t_listy **a)
 		}
 		rev_rotate(a);
 		ft_printf("rra\n");
-		return ;
+		exit (0);
 	}
 	if (temp_a->index == 1 && temp_a->next->index == 0)
 	{
-		rev_rotate(a);
 		swap(a);
-		rev_rotate(a);
-		ft_printf("rra\nsa\rra");
-		return ;
+		ft_printf("sa\n");
+		exit (0);
 	}
 	if (temp_a->index == 0 && is_sorted_a(a) == 0)
 	{
@@ -47,8 +45,9 @@ void	sort_three(t_listy **a)
 	}
 	if (temp_a->index == 2 && temp_a->next->index == 0)
 	{
-		rotate(a);
-		ft_printf("ra\n");
+		rev_rotate(a);
+		rev_rotate(a);
+		ft_printf("rra\nrra\n");
 	}
 	if (temp_a->index != 0 && temp_a->next->index != 0)
 	{

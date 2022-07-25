@@ -3,7 +3,7 @@
 		{
 			"cwd": "/Users/aball/Desktop/Cursus/push_swap/push_swap_experimental",
 			"binaryPath": "/Users/aball/Desktop/Cursus/push_swap/push_swap_experimental/push_swap",
-			"binaryArgs": ["2", "1", "3"]
+			"binaryArgs": ["39", "25", "17"]
 		}
 	],
 	"editor.fontSize": 16,
