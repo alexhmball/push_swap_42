@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:35:21 by aball             #+#    #+#             */
-/*   Updated: 2022/07/04 00:09:01 by aball            ###   ########.fr       */
+/*   Updated: 2022/07/29 18:37:21 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,21 @@ static void	sort_lst(t_listy **a, t_listy **b)
 		}
 		else if (lst_last(*b)->index > temp_b->index && lst_last(*a)->index < temp_a->index)
 		{
-			rev_rotate(b);
-			rev_rotate(a);
+			rev_rotate_b(b);
+			rev_rotate_a(a);
 			temp_a = *a;
 			temp_b = *b;
 			ft_printf("rrr\n");
 		}
 		else if (lst_last(*b)->index > temp_b->index)
 		{
-			rev_rotate(b);
+			rev_rotate_b(b);
 			temp_b = *b;
 			ft_printf("rrb\n");
 		}
 		else if (lst_last(*a)->index < temp_a->index)
 		{
-			rev_rotate(a);
+			rev_rotate_a(a);
 			temp_a = *a;
 			ft_printf("rra\n");
 		}
@@ -56,21 +56,19 @@ static void	sort_lst(t_listy **a, t_listy **b)
 		{
 			temp_a = temp_a->next;
 			temp_b = temp_b->next;
-			rotate(a);
-			rotate(b);
+			rotate_a(a);
+			rotate_b(b);
 			ft_printf("rr\n");
 		}
 		else if (temp_b->index > lst_last(*b)->index)
 		{
 			temp_b = temp_b->next;
-			rotate(b);
-			ft_printf("rb\n");
+			rotate_b(b);
 		}
 		else if (temp_a->index > lst_last(*a)->index)
 		{
 			temp_a = temp_a->next;
-			rotate(a);
-			ft_printf("ra\n");
+			rotate_a(a);
 		}
 		else if (temp_b->index < temp_b->next->index && temp_a->index > temp_a->next->index)
 		{

@@ -6,26 +6,22 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 22:30:30 by aball             #+#    #+#             */
-/*   Updated: 2022/07/25 22:59:17 by aball            ###   ########.fr       */
+/*   Updated: 2022/07/29 21:10:39 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	count_nums(char *nums)
+static int	count_nums(char **nums)
 {
 	int	i;
-	int	size;
 
 	i = 0;
-	size = 0;
 	while (nums[i])
 	{
-		if (nums[i] == ' ')
-			size++;
 		i++;
 	}
-	return (size);
+	return (i);
 }
 
 static t_listy	**create_list(int *nums, int ac)
@@ -60,7 +56,6 @@ static t_listy	**create_list(int *nums, int ac)
 			if (current->content == nums[i])
 				current->index = i;
 			current = current->next;
-			// ft_printf("%d ", current->content);
 		}
 		i++;
 	}
@@ -105,6 +100,7 @@ static int	*check_duplicates(char **nums)
 	while (nums[i])
 	{
 		numbers[i] = ft_atoi(nums[i]);
+		// ft_printf("|%d|", numbers[i]);
 		i++;
 	}
 	check_and_error(numbers);
@@ -122,7 +118,6 @@ static char	*error_handler(int ac, char **av, char *nums)
 		exit (1);
 	}
 	nums = str_sep(ac - 1, av + 1, " ");
-	// ft_printf("|%s|\n", nums);
 	while (nums[i])
 	{
 		if (ft_isdigit(nums[i]) == 0 && nums[i] != ' ' && nums[i] != '-')
@@ -144,8 +139,8 @@ int	main(int ac, char **av)
 
 	nums = NULL;
 	nums = error_handler(ac, av, nums);
-	ac = count_nums(nums) + 1;
 	only_nums = ft_split(nums, ' ');
+	ac = count_nums(only_nums);
 	free (nums);
 	numbers = check_duplicates(only_nums);
 	a = create_list(numbers, ac);

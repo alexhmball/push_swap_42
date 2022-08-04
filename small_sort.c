@@ -6,54 +6,93 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 20:18:57 by aball             #+#    #+#             */
-/*   Updated: 2022/07/25 21:32:52 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/04 20:15:44 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	is_smallest(t_listy **a, t_listy *node)
+{
+	t_listy	*current;
+
+	current	= *a;
+	while (current)
+	{
+		if (current->index < node->index)
+			return (0);
+		current = current->next;
+	}
+	return (1);
+}
 
 void	sort_three(t_listy **a)
 {
 	t_listy	*temp_a;
 
 	temp_a = *a;
-	if (is_sorted_a(a))
-		exit (0);
-	if (lst_last(*a)->index == 0)
+	if (is_smallest(a, lst_last(*a)))
 	{
-		if (temp_a->index == 2)
+		if (temp_a->index > temp_a->next->index)
+			swap_a(a);
+		rev_rotate_a(a);
+	}
+	if (is_smallest(a, temp_a->next))
+	{
+		if (temp_a->index < lst_last(*a)->index)
+			swap_a(a);
+		else
 		{
-			swap(a);
-			ft_printf("sa\n");
+			rev_rotate_a(a);
+			rev_rotate_a(a);
 		}
-		rev_rotate(a);
-		ft_printf("rra\n");
-		exit (0);
 	}
-	if (temp_a->index == 1 && temp_a->next->index == 0)
+	if (is_smallest(a, temp_a) && is_sorted_a(a) == 0)
 	{
-		swap(a);
-		ft_printf("sa\n");
-		exit (0);
+		rotate_a(a);
+		swap_a(a);
+		rev_rotate_a(a);
 	}
-	if (temp_a->index == 0 && is_sorted_a(a) == 0)
-	{
-		rotate(a);
-		swap(a);
-		rev_rotate(a);
-		ft_printf("ra\nsa\nrra\n");
-	}
-	if (temp_a->index == 2 && temp_a->next->index == 0)
-	{
-		rev_rotate(a);
-		rev_rotate(a);
-		ft_printf("rra\nrra\n");
-	}
-	if (temp_a->index != 0 && temp_a->next->index != 0)
-	{
-		rotate(a);
-		swap(a);
-		ft_printf("ra\nsa\n");
-	}
-	exit (0);
 }
+
+void	sort_four(t_listy **a, t_listy **b)
+{
+	t_listy	*temp_a;
+	int		i;
+
+	temp_a = *a;
+	i = 0;
+	while (temp_a->index != 0)
+	{
+		i++;
+		temp_a = temp_a->next;
+	}
+	temp_a = *a;
+	if (i > 1)
+	{
+		while (i)
+		{
+			rev_rotate_a(a);
+			i--;
+		}
+	}
+	else if (temp_a->next->index == 0)
+		rotate_a(a);
+	push_b(a, b);
+	temp_a = *a;
+	while (temp_a)
+	{
+		temp_a->index--;
+		temp_a = temp_a->next;
+	}
+	sort_three(a);
+	if (is_sorted_b(b) == 0)
+		swap_b(b);
+	push_a(a, b);
+}
+
+
+
+// void	sort_five(t_listy **a, t_listy **b)
+// {
+// }
