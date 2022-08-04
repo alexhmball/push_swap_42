@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 20:18:57 by aball             #+#    #+#             */
-/*   Updated: 2022/08/04 20:15:44 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/04 20:21:03 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,6 @@ void	sort_four(t_listy **a, t_listy **b)
 		rotate_a(a);
 	push_b(a, b);
 	temp_a = *a;
-	while (temp_a)
-	{
-		temp_a->index--;
-		temp_a = temp_a->next;
-	}
 	sort_three(a);
 	if (is_sorted_b(b) == 0)
 		swap_b(b);
