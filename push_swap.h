@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:55 by aball             #+#    #+#             */
-/*   Updated: 2022/08/04 19:50:28 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/07 15:34:39 by ballzball        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,22 @@
 typedef struct s_listy
 {
 	int				content;
-	int				index;
 	struct s_listy	*next;
 }				t_listy;
 
 void	print_error(int flag);
-t_listy	*new_lst(int content, int index);
+t_listy	*new_lst(int content);
 void	lst_add_front(t_listy **lst, t_listy *new);
 void	lst_add_back(t_listy **lst, t_listy *node);
 void	push_b(t_listy **a_head, t_listy **b_head);
 void	push_a(t_listy **a_head, t_listy **b_head);
-void	sorting(t_listy *a, int size);
+void	sorting(t_listy **a, int size, int median);
 int		lst_size(t_listy *lst);
 void	delone(t_listy *lst, void (*del)(void *));
 void	swap(t_listy **head);
-int		*pre_sort(int *nums, int ac);
 int		is_sorted_a(t_listy **a_head);
 int		is_sorted_b(t_listy **b_head);
-void	sort_algo(t_listy **a_head, t_listy **b_head);
-t_listy	*lst_last(t_listy *lst);
+t_listy	*lst_last(t_listy **lst);
 void	sort_three(t_listy **a);
 void	swap_b(t_listy **head);
 void	swap_a(t_listy **head);
@@ -45,6 +42,15 @@ void	rotate_a(t_listy **head);
 void	rev_rotate_b(t_listy **head);
 void	rev_rotate_a(t_listy **head);
 void	sort_four(t_listy **a, t_listy **b);
-// void	sort_five(t_listy **a, t_listy **b);
+void	sort_five(t_listy **a, t_listy **b);
+void	swap_a_b(t_listy **a, t_listy **b);
+int		find_median(int *nums, int ac);
+void	rev_rotate(t_listy **head);
+void	rev_rotate_ab(t_listy **a, t_listy **b);
+void	rotate_ab(t_listy **a, t_listy **b);
+void	rotate(t_listy **head);
+void	sort_algo(t_listy **a, t_listy **b);
+int		is_smallest(t_listy **a, t_listy *node);
+int		is_largest(t_listy **head, t_listy *node);
 
 #endif

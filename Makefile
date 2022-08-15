@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aball <aball@student.42.fr>                +#+  +:+       +#+         #
+#    By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/21 01:47:33 by aball             #+#    #+#              #
-#    Updated: 2022/07/03 20:34:08 by aball            ###   ########.fr        #
+#    Updated: 2022/08/10 23:23:58 by ballzball        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS = push_swap_utils.c main.c sorting.c push.c swap.c rotate.c algo.c check.c 
 $(NAME): all
 
 all: libft ${SRCS}
-	gcc -g -Wall -Wextra -Werror libft/libft.a ${SRCS}  -o ${NAME}
+	gcc -g -Wall -Wextra -Werror ${SRCS} libft/libft.a -o ${NAME}
 
 libft:
 	make -C libft

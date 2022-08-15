@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 22:30:30 by aball             #+#    #+#             */
-/*   Updated: 2022/07/29 21:10:39 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/05 02:49:43 by ballzball        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,32 +34,17 @@ static t_listy	**create_list(int *nums, int ac)
 	i = 0;
 	head = (t_listy **)malloc(sizeof(t_listy **));
 	head = &current;
-	current = new_lst(nums[i], i);
+	current = new_lst(nums[i]);
 	lst_add_back(head, current);
 	temp = *head;
 	i++;
 	while (i < ac)
 	{
 		head = &temp;
-		current = new_lst(nums[i], i);
+		current = new_lst(nums[i]);
 		lst_add_back(head, current);
 		i++;
 	}
-	nums = pre_sort(nums, ac);
-	i = 0;
-	current = *head;
-	while (i < ac)
-	{
-		current = *head;
-		while (current)
-		{
-			if (current->content == nums[i])
-				current->index = i;
-			current = current->next;
-		}
-		i++;
-	}
-	current = *head;
 	return (head);
 }
 
@@ -100,7 +85,6 @@ static int	*check_duplicates(char **nums)
 	while (nums[i])
 	{
 		numbers[i] = ft_atoi(nums[i]);
-		// ft_printf("|%d|", numbers[i]);
 		i++;
 	}
 	check_and_error(numbers);
@@ -135,7 +119,8 @@ int	main(int ac, char **av)
 	char	*nums;
 	char	**only_nums;
 	int		*numbers;
-	t_listy	**a;
+	int		median;
+	t_listy	*a;
 
 	nums = NULL;
 	nums = error_handler(ac, av, nums);
@@ -143,7 +128,9 @@ int	main(int ac, char **av)
 	ac = count_nums(only_nums);
 	free (nums);
 	numbers = check_duplicates(only_nums);
-	a = create_list(numbers, ac);
-	sorting(*a, ac);
+	free (only_nums);
+	a = *create_list(numbers, ac);
+	median = find_median(numbers, ac);
+	sorting(&a, ac, median);
 	return (0);
 }

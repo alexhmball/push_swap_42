@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:23:05 by aball             #+#    #+#             */
-/*   Updated: 2022/07/02 20:46:05 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/05 02:48:11 by ballzball        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	lst_size(t_listy *lst)
 
 
 //create a new node
-t_listy	*new_lst(int content, int index)
+t_listy	*new_lst(int content)
 {
 	t_listy	*new;
 
@@ -59,7 +59,6 @@ t_listy	*new_lst(int content, int index)
 	if (!new)
 		return (0);
 	new->content = content;
-	new->index = index;
 	new->next = NULL;
 	return (new);
 }
@@ -98,11 +97,14 @@ void	lst_add_back(t_listy **lst, t_listy *node)
 	node->next = NULL;
 }
 
-t_listy *lst_last(t_listy *lst)
+t_listy *lst_last(t_listy **lst)
 {
-	if (!lst)
+	t_listy	*temp;
+	
+	temp = *lst;
+	if (!temp)
 		return (0);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
+	while (temp->next)
+		temp = temp->next;
+	return (temp);
 }
