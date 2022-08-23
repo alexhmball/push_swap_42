@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:23:05 by aball             #+#    #+#             */
-/*   Updated: 2022/08/05 02:48:11 by ballzball        ###   ########.fr       */
+/*   Updated: 2022/08/23 22:22:55 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ void	print_error(int flag)
 
 	if (flag == 1)
 	{
-		error = "Error\nPlease enter only numbers\n";
-		write(2, error, ft_strlen(error));
+		error = "Error\n";
+		write(2, error, 6);
 	}
 	if (flag == 2)
 	{
-		error = "Error\nPlease provide numbers to sort\n";
-		write(2, error, ft_strlen(error));
+		error = "Error\n";
+		write(2, error, 6);
 	}
 	if (flag == 3)
 	{
-		error = "Error\nPlease remove duplicate numbers\n";
-		write(2, error, ft_strlen(error));
+		error = "Error\n";
+		write(2, error, 6);
 	}
 	exit (1);
 }
@@ -100,7 +100,7 @@ void	lst_add_back(t_listy **lst, t_listy *node)
 t_listy *lst_last(t_listy **lst)
 {
 	t_listy	*temp;
-	
+
 	temp = *lst;
 	if (!temp)
 		return (0);
