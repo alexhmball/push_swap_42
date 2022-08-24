@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Tue Aug 23 19:35:00 2022
+# Make data base, printed on Wed Aug 24 16:20:30 2022
 
 # Variables
 
@@ -23,7 +23,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/aball/Desktop/Cursus/push_swap_experimental
+CURDIR := /Users/aball/Desktop/Cursus/push_swap
 # makefile
 SHELL = /bin/sh
 # environment
@@ -43,11 +43,11 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.dit5WRL25I/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.pSQpLJE9H3/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
-PWD = /Users/aball/Desktop/Cursus/push_swap_experimental
+PWD = /Users/aball/Desktop/Cursus/push_swap
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
@@ -57,11 +57,11 @@ HOME = /Users/aball
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/aball/Library/Application Support/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
+VSCODE_CODE_CACHE_PATH = /Users/aball/Library/Application Support/Code/CachedData/e4503b30fc78200f846c62cf8091b76ff5547662
 # environment
 LOGNAME = aball
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 ZSH = /Users/aball/.oh-my-zsh
 # environment
@@ -99,7 +99,7 @@ TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000cc3800330t/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/aball/Library/Application Support/Code/1.69.2-main.sock
+VSCODE_IPC_HOOK = /Users/aball/Library/Application Support/Code/1.70.2-main.sock
 # environment
 MallocNanoZone = 0
 # makefile
@@ -109,7 +109,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.1664
+XPC_SERVICE_NAME = com.microsoft.VSCode.2380
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -135,7 +135,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 3338
+VSCODE_PID = 17817
 # variable set hash-table stats:
 # Load=62/1024=6%, Rehash=0, Collisions=1/90=1%
 
@@ -145,9 +145,9 @@ VSCODE_PID = 3338
 
 # Directories
 
-# . (device 16777225, inode 2041489): 22 files, no impossibilities.
+# . (device 16777225, inode 2064422): 24 files, no impossibilities.
 
-# 22 files, no impossibilities in 1 directories.
+# 24 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -212,7 +212,6 @@ libft:
 # Load=8/32=25%, Rehash=0, Collisions=1/10=10%
 #  commands to execute (from `Makefile', line 24):
 	make -C libft
-	make bonus -C libft
 	
 
 # Not a target:
@@ -230,7 +229,7 @@ check.c:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-23 19:34:52
+#  Last modified 2022-08-24 16:20:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -246,7 +245,7 @@ fclean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 31):
+#  commands to execute (from `Makefile', line 30):
 	rm -fr $(NAME)
 	make fclean -C libft
 	
@@ -284,7 +283,7 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 28):
+#  commands to execute (from `Makefile', line 27):
 	make clean -C libft
 	
 
@@ -318,6 +317,6 @@ algo.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue Aug 23 19:35:00 2022
+# Finished Make data base on Wed Aug 24 16:20:30 2022
 
  

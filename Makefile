@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+         #
+#    By: aball <aball@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/21 01:47:33 by aball             #+#    #+#              #
-#    Updated: 2022/08/10 23:23:58 by ballzball        ###   ########.fr        #
+#    Updated: 2022/08/24 16:20:17 by aball            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ all: libft ${SRCS}
 
 libft:
 	make -C libft
-	make bonus -C libft
 
 clean:
 	make clean -C libft
