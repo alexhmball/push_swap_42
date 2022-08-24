@@ -1,12 +1,3 @@
 {
-	"makefile.launchConfigurations": [
-		{
-			"cwd": "/home/ballzball/Desktop/cursus/push_swap",
-			"binaryPath": "/home/ballzball/Desktop/cursus/push_swap/push_swap",
-			"binaryArgs": ["6 1 3 2 5 4"]
-		}
-	],
-	"editor.fontSize": 16,
-	"editor.formatOnPaste": true,
-	"editor.insertSpaces": false
+	"makefile.extensionOutputFolder": "./.vscode"
 }

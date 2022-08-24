@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:48 by aball             #+#    #+#             */
-/*   Updated: 2022/08/23 22:34:13 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/24 14:01:22 by ballzball        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,19 +58,25 @@ static void	split_list(t_listy **a, t_listy **b, int median)
 	{
 		temp_a = *a;
 		temp_b = *b;
-		if (lst_size(*b) > 1 && is_largest(b, temp_b->next))
-		{
-			if (temp_a->content >= median)
-				swap_a_b(a, b);
-			else
-				swap_b(b);
-		}
-		else if (lst_size(*b) > 1 && is_smallest(b, temp_b))
+		if (lst_size(*b) > 1 && is_smallest(b, temp_b))
 		{
 			if (temp_a->content >= median)
 				rotate_ab(a, b);
 			else
 				rotate_b(b);
+		}
+		else if (lst_size(*b) > 2 && is_smallest(b, temp_b->next))
+		{
+			if (temp_a->content >= median)
+			{
+				swap_a_b(a, b);
+				rotate_b(b);
+			}
+			else
+			{
+				swap_b(b);
+				rotate_b(b);
+			}
 		}
 		else if (lst_size(*b) > 1 && is_largest(b, lst_last(b)))
 		{
@@ -78,6 +84,13 @@ static void	split_list(t_listy **a, t_listy **b, int median)
 				rev_rotate_ab(a, b);
 			else
 				rev_rotate_b(b);
+		}
+		else if (lst_size(*b) > 1 && is_largest(b, temp_b->next))
+		{
+			if (temp_a->content >= median)
+				swap_a_b(a, b);
+			else
+				swap_b(b);
 		}
 		else if (temp_a->content < median)
 			push_b(a, b);
@@ -89,11 +102,11 @@ static void	split_list(t_listy **a, t_listy **b, int median)
 void	sorting(t_listy **a, int size, int median)
 {
 	t_listy	**b;
-	t_listy	*temp_a;
+	// t_listy	*temp_a;
 	t_listy	*temp_b;
 
 	b = (t_listy **)malloc(sizeof(t_listy **));
-	temp_a = *a;
+	// temp_a = *a;
 	small_sort(a, b, size);
 	split_list(a, b, median);
 	if (is_sorted_a(a) == 0)

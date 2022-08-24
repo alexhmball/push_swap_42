@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:35:21 by aball             #+#    #+#             */
-/*   Updated: 2022/08/23 21:25:26 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/24 14:08:05 by ballzball        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,20 @@ int	is_largest(t_listy **head, t_listy *node)
 
 void	sort_algo(t_listy **a, t_listy **b)
 {
-	t_listy	*temp_a;
+	// t_listy	*temp_a;
 	t_listy	*temp_b;
 
-	temp_a = *a;
+	// temp_a = *a;
 	temp_b = *b;
 
 	if (is_largest(b, temp_b))
 		push_a(a, b);
+	else if (is_smallest(b, temp_b))
+		rotate_b(b);
+	else if (is_smallest(b, temp_b->next))
+	{
+		swap_b(b);
+	}
 	else if (is_largest(b, temp_b->next))
 		swap_b(b);
 	else if (is_largest(b, lst_last(b)))
