@@ -6,37 +6,15 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:23:05 by aball             #+#    #+#             */
-/*   Updated: 2022/08/23 22:22:55 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/24 22:55:07 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_error(int flag)
-{
-	char *error;
-
-	if (flag == 1)
-	{
-		error = "Error\n";
-		write(2, error, 6);
-	}
-	if (flag == 2)
-	{
-		error = "Error\n";
-		write(2, error, 6);
-	}
-	if (flag == 3)
-	{
-		error = "Error\n";
-		write(2, error, 6);
-	}
-	exit (1);
-}
-
 int	lst_size(t_listy *lst)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!lst)
@@ -48,7 +26,6 @@ int	lst_size(t_listy *lst)
 	}
 	return (i);
 }
-
 
 //create a new node
 t_listy	*new_lst(int content)
@@ -78,7 +55,7 @@ void	lst_add_front(t_listy **lst, t_listy *new)
 //adds a node to the front of the list
 void	lst_add_back(t_listy **lst, t_listy *node)
 {
-	t_listy *temp;
+	t_listy	*temp;
 
 	temp = *lst;
 	if (!lst)
@@ -87,7 +64,7 @@ void	lst_add_back(t_listy **lst, t_listy *node)
 	{
 		*lst = node;
 		node->next = NULL;
-		return;
+		return ;
 	}
 	while (temp->next)
 	{
@@ -97,7 +74,7 @@ void	lst_add_back(t_listy **lst, t_listy *node)
 	node->next = NULL;
 }
 
-t_listy *lst_last(t_listy **lst)
+t_listy	*lst_last(t_listy **lst)
 {
 	t_listy	*temp;
 

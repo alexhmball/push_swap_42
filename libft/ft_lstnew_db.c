@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew_db.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/19 22:40:56 by ballzball         #+#    #+#             */
-/*   Updated: 2022/04/19 22:40:57 by ballzball        ###   ########.fr       */
+/*   Updated: 2022/08/24 22:34:20 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ t_dlist	*ft_lstnew_db(void *content)
 		return (0);
 	new->content = content;
 	new->next = 0;
-	new->prev= 0;
+	new->prev = 0;
 	return (new);
 }

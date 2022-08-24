@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 19:45:41 by aball             #+#    #+#             */
-/*   Updated: 2022/08/05 00:07:24 by ballzball        ###   ########.fr       */
+/*   Updated: 2022/08/24 22:59:29 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void push_b(t_listy **a_head, t_listy **b_head)
+void	push_b(t_listy **a_head, t_listy **b_head)
 {
-	t_listy *temp_a;
+	t_listy	*temp_a;
 
 	temp_a = *a_head;
 	if (temp_a->next)
@@ -24,9 +24,9 @@ void push_b(t_listy **a_head, t_listy **b_head)
 	ft_printf("pb\n");
 }
 
-void push_a(t_listy **a_head, t_listy **b_head)
+void	push_a(t_listy **a_head, t_listy **b_head)
 {
-	t_listy *temp_b;
+	t_listy	*temp_b;
 
 	temp_b = *b_head;
 	*b_head = temp_b->next;

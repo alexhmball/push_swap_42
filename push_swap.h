@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:55 by aball             #+#    #+#             */
-/*   Updated: 2022/08/24 18:08:31 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/24 22:58:36 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,12 @@ void	rotate(t_listy **head);
 void	sort_algo(t_listy **a, t_listy **b);
 int		is_smallest(t_listy **a, t_listy *node);
 int		is_largest(t_listy **head, t_listy *node);
+int		largest_position(t_listy **head);
+int		smallest_position(t_listy **head);
+int		find_nums_left(t_listy **a, int median);
+int		find_upper_half(t_listy **a, int median);
+char	*error_handler(int ac, char **av, char *nums);
+int		*check_duplicates(char **nums);
+void	check_and_error(int *numbers);
 
 #endif
