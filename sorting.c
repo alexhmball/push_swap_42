@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:48 by aball             #+#    #+#             */
-/*   Updated: 2022/08/24 19:50:51 by ballzball        ###   ########.fr       */
+/*   Updated: 2022/08/24 19:56:10 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,20 @@ static void	small_sort(t_listy **a, t_listy **b, int size)
 		sort_five(a, b);
 }
 
+static int	find_nums_left(t_listy **a, int median)
+{
+	t_listy	*temp_a;
+
+	temp_a = *a;
+	while (temp_a)
+	{
+		if (temp_a->content >= median)
+			return (1);
+		temp_a = temp_a->next;
+	}
+	return (0);
+}
+
 static int	split_list_lower(t_listy **a, t_listy **b, int median, int size)
 {
 	t_listy	*temp_a;
@@ -58,7 +72,7 @@ static int	split_list_lower(t_listy **a, t_listy **b, int median, int size)
 
 	size /= 2;
 	i = 0;
-	while (lst_size(*a) > size && is_sorted_a(a) == 0)
+	while (find_nums_left(a, median))
 	{
 		temp_a = *a;
 		// temp_b = *b;
