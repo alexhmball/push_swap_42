@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:48 by aball             #+#    #+#             */
-/*   Updated: 2022/08/24 19:01:19 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/24 19:12:34 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ static void	split_list_lower(t_listy **a, t_listy **b, int median, int size)
 	{
 		temp_a = *a;
 		temp_b = *b;
-		if (temp_a->content <= median)
+		if (temp_a->content >= median)
 			push_b(a, b);
-		else if (temp_a->next->content <= median)
+		else if (temp_a->next->content >= median)
 			swap_a(a);
-		else if (lst_last(a)->content <= median)
+		else if (lst_last(a)->content >= median)
 			rev_rotate_a(a);
 		else
 			rotate_a(a);
@@ -87,9 +87,9 @@ void	sorting(t_listy **a, int size, int median)
 	{
 		split_list_lower(a, b, median, size);
 		sort_algo(a, b);
-		while (temp_a->content <= median)
+		while (temp_a->content >= median)
 		{
-			rotate_a(a);
+			rev_rotate_a(a);
 			temp_a = *a;
 		}
 		while (is_sorted_a(a) == 0)
