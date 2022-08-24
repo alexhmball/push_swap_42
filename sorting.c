@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:48 by aball             #+#    #+#             */
-/*   Updated: 2022/08/24 19:56:10 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/24 20:46:51 by ballzball        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,26 @@ static int	find_nums_left(t_listy **a, int median)
 	return (0);
 }
 
-static int	split_list_lower(t_listy **a, t_listy **b, int median, int size)
+static int	find_upper_half(t_listy **a, int median)
+{
+	t_listy	*temp_a;
+
+	temp_a = *a;
+	while (temp_a)
+	{
+		if (temp_a->content < median)
+			return (1);
+		temp_a = temp_a->next;
+	}
+	return (0);
+}
+
+static int	split_list_lower(t_listy **a, t_listy **b, int median)
 {
 	t_listy	*temp_a;
 	int		i;
 	// t_listy	*temp_b;
 
-	size /= 2;
 	i = 0;
 	while (find_nums_left(a, median))
 	{
@@ -97,31 +110,25 @@ void	sorting(t_listy **a, int size, int median)
 {
 	t_listy	**b;
 	t_listy	*temp_b;
-	t_listy	*temp_a;
+	// t_listy	*temp_a;
 	int		i;
 
 	b = (t_listy **)malloc(sizeof(t_listy **));
-	temp_a = *a;
+	// temp_a = *a;
 	if (size < 6)
 		small_sort(a, b, size);
 	else
 	{
-		i = split_list_lower(a, b, median, size);
+		i = split_list_lower(a, b, median);
 		sort_algo(a, b);
-		while (i)
+		while (lst_last(a)->content < median)
 		{
 			rev_rotate_a(a);
-			temp_a = *a;
 			i--;
 		}
-		while (is_sorted_a(a) == 0)
+		while (find_upper_half(a, median))
 			push_b(a, b);
 		sort_algo(a, b);
-		while (temp_a->content > median)
-		{
-			rotate_a(a);
-			temp_a = *a;
-		}
 	}
 	temp_b = *b;
 	while (temp_b)
