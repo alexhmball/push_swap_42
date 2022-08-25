@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:48 by aball             #+#    #+#             */
-/*   Updated: 2022/08/24 22:43:55 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/25 17:59:02 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	split_list_lower(t_listy **a, t_listy **b, int median)
 	return (i);
 }
 
-void	medium_sort(t_listy **a, t_listy **b, int median)
+static void	medium_sort(t_listy **a, t_listy **b, int median)
 {
 	split_list_lower(a, b, median);
 	sort_algo(a, b);
@@ -57,14 +57,6 @@ void	medium_sort(t_listy **a, t_listy **b, int median)
 	while (find_upper_half(a, median))
 		push_b(a, b);
 	sort_algo(a, b);
-}
-
-void	big_sort(t_listy **a, t_listy **b, int median)
-{
-	(void)a;
-	(void)b;
-	(void)median;
-	ft_printf("Under development\n");
 }
 
 void	sorting(t_listy **a, int size, int median)
@@ -80,7 +72,10 @@ void	sorting(t_listy **a, int size, int median)
 		if (size <= 100)
 			medium_sort(a, b, median);
 		else
-			big_sort(a, b, median);
+		{
+			while (is_sorted_a(a) == 0 && lst_size(*b) > 0)
+				big_sort(a, b, median, size);
+		}
 	}
 	temp_b = *b;
 	while (temp_b)
