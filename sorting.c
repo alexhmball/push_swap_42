@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:48 by aball             #+#    #+#             */
-/*   Updated: 2022/08/27 19:40:09 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/27 21:10:48 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	small_sort(t_listy **a, t_listy **b, int size)
 		sort_five(a, b);
 }
 
-static int	split_list_lower(t_listy **a, t_listy **b, int median)
+int	split_list_lower(t_listy **a, t_listy **b, int median)
 {
 	t_listy	*temp_a;
 	int		i;

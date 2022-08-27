@@ -6,11 +6,13 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Sat Aug 27 20:55:11 2022
+# Make data base, printed on Sat Aug 27 21:19:59 2022
 
 # Variables
 
+ 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -60,7 +62,7 @@ VSCODE_CODE_CACHE_PATH = /Users/aball/Library/Application Support/Code/CachedDat
 # environment
 LOGNAME = aball
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 ZSH = /Users/aball/.oh-my-zsh
 # environment
@@ -74,7 +76,7 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # makefile (from `Makefile', line 15)
-SRCS = push_swap_utils.c main.c sorting.c push.c swap.c rotate.c algo.c check.c small_sort.c size.c find.c rotate_two.c error.c big_sort.c
+SRCS = push_swap_utils.c main.c sorting.c push.c swap.c rotate.c algo.c check.c small_sort.c size.c find.c rotate_two.c error.c big_sort.c algo_p2.c
 # environment
 SHLVL = 1
 # default
@@ -144,9 +146,9 @@ VSCODE_PID = 1468
 
 # Directories
 
-# . (device 16777225, inode 2074860): 32 files, no impossibilities.
+# . (device 16777225, inode 2074860): 31 files, no impossibilities.
 
-# 32 files, no impossibilities in 1 directories.
+# 31 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -154,7 +156,7 @@ VSCODE_PID = 1468
 
 # Files
 
-all: libft push_swap_utils.c main.c sorting.c push.c swap.c rotate.c algo.c check.c small_sort.c size.c find.c rotate_two.c error.c big_sort.c
+all: libft push_swap_utils.c main.c sorting.c push.c swap.c rotate.c algo.c check.c small_sort.c size.c find.c rotate_two.c error.c big_sort.c algo_p2.c
 #  Phony target (prerequisite of .PHONY).
 #  Command-line target.
 #  Implicit rule search has not been done.
@@ -234,8 +236,9 @@ check.c:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-25 15:28:32
+#  Last modified 2022-08-27 21:19:53
 #  File has been updated.
+ 
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
@@ -254,6 +257,12 @@ fclean:
 	rm -fr $(NAME)
 	make fclean -C libft
 	
+
+# Not a target:
+algo_p2.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 big_sort.c:
@@ -334,19 +343,18 @@ algo.c:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=24/1024=2%, Rehash=0, Collisions=0/58=0%
+# Load=25/1024=2%, Rehash=0, Collisions=0/60=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
 
 # No general (`VPATH' variable) search path.
 
- 
 # # of strings in strcache: 1
 # # of strcache buffers: 1
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sat Aug 27 20:55:11 2022
+# Finished Make data base on Sat Aug 27 21:19:59 2022
 
  

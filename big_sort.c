@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:28:45 by aball             #+#    #+#             */
-/*   Updated: 2022/08/27 21:01:07 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/27 21:20:52 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 		sort_algo(a, b);
 		while (rot)
 		{
-			rev_rotate_a(a);
+			rotate_a(a);
 			rot--;
 		}
 	}
@@ -147,7 +147,7 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 		sort_algo(a, b);
 		while (rot)
 		{
-			rev_rotate_a(a);
+			rotate_a(a);
 			rot--;
 		}
 	}
@@ -164,10 +164,10 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 			f = split_list(a, b, i, bottom, size / 2);
 		}
 		size = lst_size(*b);
-		sort_algo(a, b);
+		sort_algo_push_small(a, b);
 		while (rot)
 		{
-			rotate_a(a);
+			rev_rotate_a(a);
 			rot--;
 		}
 	}
