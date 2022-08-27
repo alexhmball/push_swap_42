@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:48 by aball             #+#    #+#             */
-/*   Updated: 2022/08/27 18:39:12 by ballzball        ###   ########.fr       */
+/*   Updated: 2022/08/27 19:23:09 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,10 @@ void	sorting(t_listy **a, int size, int median)
 		else
 		{
 			while (sorted < size)
+			{
 				sorted += big_sort(a, b, median, size);
+				sort_algo(a, b);
+			}
 		}
 	}
 	temp_b = *b;
