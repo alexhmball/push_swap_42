@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:28:45 by aball             #+#    #+#             */
-/*   Updated: 2022/08/27 23:30:58 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/27 23:32:34 by ballzball        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,19 +78,19 @@ static int	find_max(t_listy **a)
 
 int	big_sort(t_listy **a, t_listy **b, int median, int size)
 {
-	t_listy	*temp_a;
+	// t_listy	*temp_a;
 	int		top;
 	int		bottom;
 	int		sorted;
-	int		min;
+	// int		min;
 
 	top = median + (median/2);
 	bottom = find_max(a);
 	sorted = 0;
-	temp_a = *a;
+	// temp_a = *a;
 	split_chunk(a, b, top, bottom);
 	sorted += lst_size(*b);
-	min = find_max(b);
+	// min = find_max(b);
 	sort_algo(a, b);
 	while (sorted < size)
 	{
@@ -102,7 +102,7 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 		// 	temp_a = *a;
 		// 	ft_printf("min: %d\n", min);
 		// }
-		min = find_max(b);
+		// min = find_max(b);
 		sort_algo(a, b);
 		bottom = top;
 		top -= top - (top/2);
