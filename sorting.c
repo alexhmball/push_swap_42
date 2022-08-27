@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:48 by aball             #+#    #+#             */
-/*   Updated: 2022/08/25 17:59:02 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/27 18:11:53 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	sorting(t_listy **a, int size, int median)
 			medium_sort(a, b, median);
 		else
 		{
-			while (is_sorted_a(a) == 0 && lst_size(*b) > 0)
+			while (is_sorted_a(a) == 0)
 				big_sort(a, b, median, size);
 		}
 	}

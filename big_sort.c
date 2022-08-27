@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:28:45 by aball             #+#    #+#             */
-/*   Updated: 2022/08/25 22:59:01 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/27 18:14:57 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ static int	split_list(t_listy **a, t_listy **b, int top, int bottom, int size)
 	}
 	else if (find_location(a, top, bottom) == 0)
 		return (0);
+	else if (find_location(a, top, bottom) == 1)
+		swap_a(a);
 	else if (find_location(a, top, bottom) > size)
 	{
 		while (!(temp_a->content <= top && temp_a->content >= bottom))
@@ -110,4 +112,5 @@ void	big_sort(t_listy **a, t_listy **b, int median, int size)
 		}
 		flag = 1;
 	}
+	sort_algo(a, b);
 }
