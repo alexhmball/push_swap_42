@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 20:18:57 by aball             #+#    #+#             */
-/*   Updated: 2022/08/24 22:42:37 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/25 00:17:27 by ballzball        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ void	sort_three(t_listy **a)
 		if (temp_a->content < lst_last(a)->content)
 			swap_a(a);
 		else
-		{
-			rev_rotate_a(a);
-			rev_rotate_a(a);
-		}
+			rotate_a(a);
 	}
 	if (is_smallest(a, temp_a) && is_sorted_a(a) == 0)
 	{
