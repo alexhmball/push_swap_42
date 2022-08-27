@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 00:03:13 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 00:03:38 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/28 00:12:42 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,23 @@ static int	find_nums(t_listy **a, int top, int bottom)
 	return (0);
 }
 
+static int	find_position(t_listy **a, int top, int bottom)
+{
+	t_listy	*temp_a;
+	int		i;
+
+	temp_a = *a;
+	i = 0;
+	while (temp_a)
+	{
+		if (temp_a->content > top && temp_a->content <= bottom)
+			break;
+		i++;
+		temp_a = temp_a->next;
+	}
+	return (i);
+}
+
 static void	split_chunk(t_listy **a, t_listy **b, int top, int bottom)
 {
 	t_listy	*temp_a;
@@ -38,6 +55,8 @@ static void	split_chunk(t_listy **a, t_listy **b, int top, int bottom)
 			push_b(a, b);
 		else if (temp_a->next->content > top && temp_a->next->content <= bottom)
 			swap_a(a);
+		else if (find_position(a, top, bottom) > lst_size(*a) / 2)
+			rev_rotate_a(a);
 		else if (lst_last(a)->content > top && lst_last(a)->content <= bottom)
 			rev_rotate_a(a);
 		else
