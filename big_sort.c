@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:28:45 by aball             #+#    #+#             */
-/*   Updated: 2022/08/27 18:14:57 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/27 18:21:58 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static int	split_list(t_listy **a, t_listy **b, int top, int bottom, int size)
 	int		flag;
 
 	temp_a = *a;
-	size /= 2;
 	flag = 2;
 	if (temp_a->content <= top && temp_a->content >= bottom)
 	{
@@ -65,11 +64,12 @@ static int	split_list(t_listy **a, t_listy **b, int top, int bottom, int size)
 	return (flag);
 }
 
-void	big_sort(t_listy **a, t_listy **b, int median, int size)
+int	big_sort(t_listy **a, t_listy **b, int median, int size)
 {
 	static int	flag;
 	static int	top;
 	static int	bottom;
+	static int	sorted;
 	int			i;
 	int			f;
 
@@ -79,38 +79,41 @@ void	big_sort(t_listy **a, t_listy **b, int median, int size)
 	{
 		top = median;
 		bottom = median;
-		while (lst_size(*b) < 10)
+		while (lst_size(*b) < 10 && sorted + lst_size(*b) < size)
 		{
 			if (f == 0)
 			{
 				top++;
 				bottom--;
 			}
-			f = split_list(a, b, top, bottom, size);
+			f = split_list(a, b, top, bottom, size / 2);
 		}
 		flag = 1;
 	}
 	if (flag == 1)
 	{
 		i = top;
-		while (lst_size(*b) < 10)
+		while (lst_size(*b) < 10 && sorted + lst_size(*b) < size)
 		{
 			if (f == 0)
 				top++;
-			f = split_list(a, b, top, i, size);
+			f = split_list(a, b, top, i, size / 2);
 		}
 		flag = 2;
 	}
 	if (flag == 2)
 	{
 		i = bottom;
-		while (lst_size(*b) < 10)
+		while (lst_size(*b) < 10 && sorted + lst_size(*b) < size)
 		{
 			if (f == 0)
 				bottom--;
-			f = split_list(a, b, i, bottom, size);
+			f = split_list(a, b, i, bottom, size / 2);
 		}
 		flag = 1;
 	}
+	size = lst_size(*b);
+	sorted += size;
 	sort_algo(a, b);
+	return (size);
 }
