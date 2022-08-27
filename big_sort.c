@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:28:45 by aball             #+#    #+#             */
-/*   Updated: 2022/08/27 22:14:53 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/27 22:16:44 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ static int	find_min(t_listy **a)
 
 int	big_sort(t_listy **a, t_listy **b, int median, int size)
 {
-	t_listy	*temp_a;
 	int		max;
 	int		min;
 	int		sorted;

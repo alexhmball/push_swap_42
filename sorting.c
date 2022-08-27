@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:48 by aball             #+#    #+#             */
-/*   Updated: 2022/08/27 22:08:42 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/27 22:17:03 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	sorting(t_listy **a, int size, int median)
 {
 	t_listy	**b;
 	t_listy	*temp_b;
-	int		sorted;
 
 	sorted = 0;
 	b = (t_listy **)malloc(sizeof(t_listy **));
