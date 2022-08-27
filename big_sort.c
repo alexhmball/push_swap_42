@@ -6,43 +6,42 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:28:45 by aball             #+#    #+#             */
-/*   Updated: 2022/08/27 21:20:52 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/27 22:14:53 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	find_location(t_listy **a, int top, int bottom)
+static int	find_nums(t_listy **a, int min, int max)
 {
-	t_listy	*temp_a;
-	int		i;
+	t_listy *temp_a;
 
 	temp_a = *a;
-	i = 1;
 	while (temp_a)
 	{
-		if (temp_a->content <= top && temp_a->content >= bottom)
-			return (i);
-		i++;
+		if (temp_a->content >= min && temp_a->content < max)
+			return (1);
 		temp_a = temp_a->next;
 	}
 	return (0);
 }
 
-static int	find_max(t_listy **a)
+static void	split_chunk(t_listy **a, t_listy **b, int max, int min)
 {
-	t_listy *temp_a;
-	int		max;
+	t_listy	*temp_a;
 
-	max = INT_MIN;
-	temp_a = *a;
-	while (temp_a)
+	while (find_nums(a, min, max))
 	{
-		if (temp_a->content > max)
-			max = temp_a->content;
-		temp_a = temp_a->next;
+		temp_a = *a;
+		if (temp_a->content >= min && temp_a->content < max)
+			push_b(a, b);
+		else if (temp_a->next->content >= min && temp_a->next->content < max)
+			swap_a(a);
+		else if (lst_last(a)->content >= min && lst_last(a)->content < max)
+			rev_rotate_a(a);
+		else
+			rotate_a(a);
 	}
-	return (max);
 }
 
 static int	find_min(t_listy **a)
@@ -61,116 +60,25 @@ static int	find_min(t_listy **a)
 	return (min);
 }
 
-static int	split_list(t_listy **a, t_listy **b, int top, int bottom, int size)
-{
-	t_listy	*temp_a;
-	int		flag;
-
-	temp_a = *a;
-	flag = 2;
-	if (temp_a->content <= top && temp_a->content >= bottom)
-	{
-		push_b(a, b);
-		flag = 1;
-	}
-	else if (find_location(a, top, bottom) == 0)
-		return (0);
-	else if (find_location(a, top, bottom) == 2)
-		swap_a(a);
-	else if (find_location(a, top, bottom) > size)
-	{
-		while (!(temp_a->content <= top && temp_a->content >= bottom))
-		{
-			rev_rotate_a(a);
-			temp_a = *a;
-		}
-	}
-	else if (find_location(a, top, bottom) <= size)
-	{
-		while (!(temp_a->content <= top && temp_a->content >= bottom))
-		{
-			rotate_a(a);
-			temp_a = *a;
-		}
-	}
-	return (flag);
-}
-
 int	big_sort(t_listy **a, t_listy **b, int median, int size)
 {
-	static int	flag;
-	static int	top;
-	static int	bottom;
-	static int	sorted;
-	int			i;
-	int			f;
-	int			rot;
+	t_listy	*temp_a;
+	int		max;
+	int		min;
+	int		sorted;
 
-	i = 0;
-	f = 3;
-	rot = size / 5;
-	if (flag == 0)
+	max = median / 2;
+	min = find_min(a);
+	sorted = 0;
+	while (sorted < size)
 	{
-		top = median;
-		bottom = median;
-		flag = 1;
-		while (lst_size(*b) < size / 5)
-		{
-			if (f == 0)
-			{
-				top++;
-				bottom--;
-			}
-			f = split_list(a, b, top, bottom, size / 2);
-		}
-		size = lst_size(*b);
+		temp_a = *a;
+		split_chunk(a, b, max, min);
+		sorted += lst_size(*b);
 		sort_algo(a, b);
-		while (rot)
-		{
-			rotate_a(a);
-			rot--;
-		}
+		min = max;
+		max += max;
 	}
-	else if (flag == 1)
-	{
-		i = top;
-		flag = 2;
-		while (lst_size(*b) < size / 5)
-		{
-			if (f == 0)
-				top++;
-			if (top > find_max(a))
-				break;
-			f = split_list(a, b, top, i, size / 2);
-		}
-		size = lst_size(*b);
-		sort_algo(a, b);
-		while (rot)
-		{
-			rotate_a(a);
-			rot--;
-		}
-	}
-	else if (flag == 2)
-	{
-		i = bottom;
-		flag = 1;
-		while (lst_size(*b) < size / 5)
-		{
-			if (f == 0)
-				bottom--;
-			if (bottom < find_min(a))
-				break;
-			f = split_list(a, b, i, bottom, size / 2);
-		}
-		size = lst_size(*b);
-		sort_algo_push_small(a, b);
-		while (rot)
-		{
-			rev_rotate_a(a);
-			rot--;
-		}
-	}
-	sorted += size;
+
 	return (size);
 }
