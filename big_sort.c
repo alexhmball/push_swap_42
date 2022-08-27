@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:28:45 by aball             #+#    #+#             */
-/*   Updated: 2022/08/27 19:22:55 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/27 21:01:07 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,15 +104,17 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 	static int	sorted;
 	int			i;
 	int			f;
+	int			rot;
 
 	i = 0;
 	f = 3;
+	rot = size / 5;
 	if (flag == 0)
 	{
 		top = median;
 		bottom = median;
 		flag = 1;
-		while (lst_size(*b) < 20)
+		while (lst_size(*b) < size / 5)
 		{
 			if (f == 0)
 			{
@@ -121,12 +123,19 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 			}
 			f = split_list(a, b, top, bottom, size / 2);
 		}
+		size = lst_size(*b);
+		sort_algo(a, b);
+		while (rot)
+		{
+			rev_rotate_a(a);
+			rot--;
+		}
 	}
-	if (flag == 1)
+	else if (flag == 1)
 	{
 		i = top;
 		flag = 2;
-		while (lst_size(*b) < 20)
+		while (lst_size(*b) < size / 5)
 		{
 			if (f == 0)
 				top++;
@@ -134,12 +143,19 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 				break;
 			f = split_list(a, b, top, i, size / 2);
 		}
+		size = lst_size(*b);
+		sort_algo(a, b);
+		while (rot)
+		{
+			rev_rotate_a(a);
+			rot--;
+		}
 	}
-	if (flag == 2)
+	else if (flag == 2)
 	{
 		i = bottom;
 		flag = 1;
-		while (lst_size(*b) < 20)
+		while (lst_size(*b) < size / 5)
 		{
 			if (f == 0)
 				bottom--;
@@ -147,8 +163,14 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 				break;
 			f = split_list(a, b, i, bottom, size / 2);
 		}
+		size = lst_size(*b);
+		sort_algo(a, b);
+		while (rot)
+		{
+			rotate_a(a);
+			rot--;
+		}
 	}
-	size = lst_size(*b);
 	sorted += size;
 	return (size);
 }
