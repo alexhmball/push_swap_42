@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:28:45 by aball             #+#    #+#             */
-/*   Updated: 2022/08/27 18:21:58 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/27 18:32:14 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 	{
 		top = median;
 		bottom = median;
-		while (lst_size(*b) < 10 && sorted + lst_size(*b) < size)
+		while (lst_size(*b) < 10 || sorted + lst_size(*b) < size)
 		{
 			if (f == 0)
 			{
@@ -93,7 +93,7 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 	if (flag == 1)
 	{
 		i = top;
-		while (lst_size(*b) < 10 && sorted + lst_size(*b) < size)
+		while (lst_size(*b) < 10 || sorted + lst_size(*b) < size)
 		{
 			if (f == 0)
 				top++;
@@ -104,7 +104,7 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 	if (flag == 2)
 	{
 		i = bottom;
-		while (lst_size(*b) < 10 && sorted + lst_size(*b) < size)
+		while (lst_size(*b) < 10 || sorted + lst_size(*b) < size)
 		{
 			if (f == 0)
 				bottom--;
