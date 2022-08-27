@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:28:45 by aball             #+#    #+#             */
-/*   Updated: 2022/08/27 22:50:32 by ballzball        ###   ########.fr       */
+/*   Updated: 2022/08/27 22:55:59 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ static int	find_max(t_listy **a)
 
 int	big_sort(t_listy **a, t_listy **b, int median, int size)
 {
+	t_listy	*temp_a;
 	int		top;
 	int		bottom;
 	int		sorted;
@@ -69,10 +70,13 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 	top = median + (median/2);
 	bottom = find_max(a);
 	sorted = 0;
+	temp_a = *a;
 	while (sorted < size)
 	{
 		split_chunk(a, b, top, bottom);
 		sorted += lst_size(*b);
+		while (temp_a->content < top)
+			rotate_a(a);
 		sort_algo(a, b);
 		bottom = top;
 		top -= top - (top/2);
