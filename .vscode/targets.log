@@ -8,11 +8,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Sun Aug 28 18:50:34 2022
+# Make data base, printed on Sun Aug 28 22:53:08 2022
 
 # Variables
 
- 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
@@ -146,9 +145,9 @@ VSCODE_PID = 1393
 
 # Directories
 
-# . (device 16777225, inode 2074860): 32 files, no impossibilities.
+# . (device 16777225, inode 2074860): 25 files, no impossibilities.
 
-# 32 files, no impossibilities in 1 directories.
+# 25 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -165,8 +164,8 @@ all: libft push_swap_utils.c main.c sorting.c push.c swap.c rotate.c algo.c chec
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/2=0%
-#  commands to execute (from `Makefile', line 20):
-	gcc -g -Wall -Wextra -Werror ${SRCS} libft/libft.a -o ${NAME}
+#  commands to execute (from `Makefile', line 21):
+	gcc -o3 -Wall -Wextra -Werror ${SRCS} libft/libft.a -o ${NAME}
 	
 
 .PHONY: all libft
@@ -203,7 +202,6 @@ libft:
 # @ := libft
 # automatic
 # % := 
- 
 # automatic
 # * := 
 # automatic
@@ -218,7 +216,7 @@ libft:
 # ? := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/10=10%
-#  commands to execute (from `Makefile', line 23):
+#  commands to execute (from `Makefile', line 24):
 	make -C libft
 	
 
@@ -237,7 +235,7 @@ check.c:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-28 18:50:24
+#  Last modified 2022-08-28 22:48:15
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -253,7 +251,7 @@ fclean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 29):
+#  commands to execute (from `Makefile', line 30):
 	rm -fr $(NAME)
 	make fclean -C libft
 	
@@ -309,7 +307,7 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 26):
+#  commands to execute (from `Makefile', line 27):
 	make clean -C libft
 	
 
@@ -353,8 +351,9 @@ algo.c:
 # # of strings in strcache: 1
 # # of strcache buffers: 1
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+ 
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sun Aug 28 18:50:34 2022
+# Finished Make data base on Sun Aug 28 22:53:08 2022
 
  

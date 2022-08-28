@@ -6,7 +6,7 @@
 #    By: aball <aball@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/21 01:47:33 by aball             #+#    #+#              #
-#    Updated: 2022/08/28 18:50:24 by aball            ###   ########.fr        #
+#    Updated: 2022/08/28 22:55:10 by aball            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,11 @@ NAME = push_swap
 
 SRCS = push_swap_utils.c main.c sorting.c push.c swap.c rotate.c algo.c check.c \
 	small_sort.c size.c find.c rotate_two.c error.c big_sort.c free.c
+
 $(NAME): all
 
 all: libft ${SRCS}
-	gcc -g -Wall -Wextra -Werror ${SRCS} libft/libft.a -o ${NAME}
+	gcc -Wall -Wextra -Werror ${SRCS} libft/libft.a -o ${NAME}
 
 libft:
 	make -C libft
@@ -31,4 +32,4 @@ fclean:
 
 re: fclean all
 
-.PHONY: all libft
+.PHONY: all libft clean fclean
