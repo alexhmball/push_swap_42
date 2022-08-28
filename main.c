@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 22:30:30 by aball             #+#    #+#             */
-/*   Updated: 2022/08/24 22:58:05 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/28 14:20:37 by ballzball        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,6 @@ int	main(int ac, char **av)
 	free (only_nums);
 	a = *create_list(numbers, ac);
 	median = find_median(numbers, ac);
-	sorting(&a, ac, median);
+	sorting(&a, ac, median, numbers);
 	return (0);
 }

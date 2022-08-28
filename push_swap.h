@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:55 by aball             #+#    #+#             */
-/*   Updated: 2022/08/27 21:19:30 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/28 14:23:20 by ballzball        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	lst_add_front(t_listy **lst, t_listy *new);
 void	lst_add_back(t_listy **lst, t_listy *node);
 void	push_b(t_listy **a_head, t_listy **b_head);
 void	push_a(t_listy **a_head, t_listy **b_head);
-void	sorting(t_listy **a, int size, int median);
+void	sorting(t_listy **a, int size, int median, int *numbers);
 int		lst_size(t_listy *lst);
 void	delone(t_listy *lst, void (*del)(void *));
 void	swap(t_listy **head);

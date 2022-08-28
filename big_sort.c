@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 00:03:13 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 00:12:42 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/28 14:05:38 by ballzball        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	split_chunk(t_listy **a, t_listy **b, int top, int bottom)
 		else if (lst_last(a)->content > top && lst_last(a)->content <= bottom)
 			rev_rotate_a(a);
 		else
-			rotate_a(a);
+			rev_rotate_a(a);
 	}
 }
 
@@ -96,6 +96,23 @@ static int	find_min(t_listy **a)
 	return (min);
 }
 
+static int	find_node(t_listy **head, int content)
+{
+	t_listy	*temp;
+	int		i;
+	
+	i = 0;
+	temp = *head;
+	while (temp)
+	{
+		if (temp->content == content)
+			break;
+		i++;
+		temp = temp->next;
+	}
+	return (i);
+}
+
 int	big_sort(t_listy **a, t_listy **b, int median, int size)
 {
 	t_listy	*temp_a;
@@ -104,7 +121,7 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 	int		sorted;
 	int		min;
 
-	top = median + (median/2);
+	top = median;
 	bottom = find_max(a);
 	sorted = 0;
 	split_chunk(a, b, top, bottom);
@@ -112,7 +129,7 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 	min = find_min(b);
 	sort_algo(a, b);
 	bottom = top;
-	top -= top - (top/2);
+	top -= 30;
 	temp_a = *a;
 	while (sorted < size)
 	{
@@ -121,15 +138,16 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 		temp_a = *a;
 		while (temp_a->content != min)
 		{
-			rotate_a(a);
+			if (find_node(a, min) > size / 2)
+				rev_rotate_a(a);
+			else
+				rotate_a(a);
 			temp_a = *a;
-			// ft_printf("min: %d\n", min);
-			// ft_printf("a head: %d\n", temp_a->content);
 		}
 		min = find_min(b);
 		sort_algo(a, b);
 		bottom = top;
-		top -= top - (top/2);
+		top -= 30;
 	}
 	return (size);
 }

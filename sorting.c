@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:48 by aball             #+#    #+#             */
-/*   Updated: 2022/08/27 22:22:41 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/28 14:25:12 by ballzball        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,48 @@ static void	medium_sort(t_listy **a, t_listy **b, int median)
 	sort_algo(a, b);
 }
 
-void	sorting(t_listy **a, int size, int median)
+int	find_pivot(int *nums, int ac)
+{
+	int	i;
+	int	x;
+	int	temp;
+
+	i = 0;
+	while (i < ac)
+	{
+		x = 0;
+		while (x < ac)
+		{
+			if (nums[i] > nums[x])
+			{
+				temp = nums[i];
+				nums[i] = nums[x];
+				nums[x] = temp;
+			}
+			x++;
+		}
+		i++;
+	}
+	return (nums[15]);
+}
+
+void	sorting(t_listy **a, int size, int median, int *numbers)
 {
 	t_listy	**b;
 	t_listy	*temp_b;
+	int		pivot;
 
 	b = (t_listy **)malloc(sizeof(t_listy **));
 	if (size < 6)
 		small_sort(a, b, size);
 	else
 	{
-		if (size <= 100)
+		if (size <= 50)
 			medium_sort(a, b, median);
 		else
 		{
-			big_sort(a, b, median, size);
+			pivot = find_pivot(numbers, size);
+			big_sort(a, b, pivot, size);
 		}
 	}
 	temp_b = *b;
