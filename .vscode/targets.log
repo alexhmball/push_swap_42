@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Sun Aug 28 23:17:10 2022
+# Make data base, printed on Sun Aug 28 23:26:31 2022
 
 # Variables
 
@@ -32,6 +32,8 @@ VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupp
 _ = /usr/bin/make
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
+# makefile (from `Makefile', line 20)
+OBJS = ${SRCS:c=o}
 # environment
 VSCODE_CWD = /
 # environment
@@ -139,7 +141,7 @@ VSCODE_PID = 1393
 # makefile (from `Makefile', line 15)
 FILES = push_swap_utils.c main.c sorting.c push.c swap.c rotate.c algo.c check.c small_sort.c size.c find.c rotate_two.c error.c big_sort.c free.c
 # variable set hash-table stats:
-# Load=63/1024=6%, Rehash=0, Collisions=1/92=1%
+# Load=64/1024=6%, Rehash=0, Collisions=3/94=3%
 
 # Pattern-specific Variable Values
 
@@ -147,9 +149,9 @@ FILES = push_swap_utils.c main.c sorting.c push.c swap.c rotate.c algo.c check.c
 
 # Directories
 
-# . (device 16777225, inode 2074860): 9 files, no impossibilities.
+# . (device 16777225, inode 2074860): 10 files, no impossibilities.
 
-# 9 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -157,38 +159,21 @@ FILES = push_swap_utils.c main.c sorting.c push.c swap.c rotate.c algo.c check.c
 
 # Files
 
-all: libft srcs/push_swap_utils.c srcs/main.c srcs/sorting.c srcs/push.c srcs/swap.c srcs/rotate.c srcs/algo.c srcs/check.c srcs/small_sort.c srcs/size.c srcs/find.c srcs/rotate_two.c srcs/error.c srcs/big_sort.c srcs/free.c
+all: libft srcs/push_swap_utils.o srcs/main.o srcs/sorting.o srcs/push.o srcs/swap.o srcs/rotate.o srcs/algo.o srcs/check.o srcs/small_sort.o srcs/size.o srcs/find.o srcs/rotate_two.o srcs/error.o srcs/big_sort.o srcs/free.o
 #  Phony target (prerequisite of .PHONY).
 #  Command-line target.
+ 
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/2=0%
-#  commands to execute (from `Makefile', line 23):
-	gcc -Wall -Wextra -Werror ${SRCS} libft/libft.a -o ${NAME}
+#  commands to execute (from `Makefile', line 25):
+	gcc -Wall -Wextra -Werror ${OBJS} libft/libft.a -o ${NAME}
 	
 
-# Not a target:
-srcs/small_sort.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
 .PHONY: all libft clean fclean
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-srcs/algo.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-srcs/find.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -218,15 +203,9 @@ libft:
 # ? := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/10=10%
-#  commands to execute (from `Makefile', line 26):
+#  commands to execute (from `Makefile', line 28):
 	make -C libft
 	
-
-# Not a target:
-srcs/size.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
 
 # Not a target:
 .SUFFIXES:
@@ -235,22 +214,34 @@ srcs/size.c:
 #  File has not been updated.
 
 # Not a target:
+srcs/free.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-28 23:14:18
+#  Last modified 2022-08-28 23:26:04
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-srcs/main.c:
+srcs/swap.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-srcs/error.c:
+srcs/check.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/push.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -260,25 +251,43 @@ fclean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 32):
+#  commands to execute (from `Makefile', line 34):
 	rm -fr $(NAME)
 	make fclean -C libft
 	
 
 # Not a target:
+srcs/big_sort.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/rotate_two.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/rotate.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/push_swap_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/sorting.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 .DEFAULT:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-srcs/free.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-srcs/swap.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -293,7 +302,7 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 29):
+#  commands to execute (from `Makefile', line 31):
 	make clean -C libft
 	
 
@@ -303,48 +312,41 @@ push_swap: all
 #  File has not been updated.
 
 # Not a target:
-srcs/check.c:
+srcs/small_sort.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-srcs/push.c:
+srcs/algo.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-srcs/big_sort.c:
+srcs/find.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-srcs/rotate_two.c:
+srcs/size.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-srcs/rotate.c:
+srcs/main.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-srcs/push_swap_utils.c:
+srcs/error.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-srcs/sorting.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
- 
 # files hash-table stats:
 # Load=25/1024=2%, Rehash=0, Collisions=0/62=0%
 # VPATH Search Paths
@@ -358,6 +360,6 @@ srcs/sorting.c:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sun Aug 28 23:17:11 2022
+# Finished Make data base on Sun Aug 28 23:26:31 2022
 
  
