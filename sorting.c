@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:48 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 14:25:12 by ballzball        ###   ########.fr       */
+/*   Updated: 2022/08/28 17:03:29 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	medium_sort(t_listy **a, t_listy **b, int median)
 	sort_algo(a, b);
 }
 
-int	find_pivot(int *nums, int ac)
+int	*find_pivot(int *nums, int ac)
 {
 	int	i;
 	int	x;
@@ -81,14 +81,14 @@ int	find_pivot(int *nums, int ac)
 		}
 		i++;
 	}
-	return (nums[15]);
+	return (nums);
 }
 
 void	sorting(t_listy **a, int size, int median, int *numbers)
 {
 	t_listy	**b;
 	t_listy	*temp_b;
-	int		pivot;
+	int		*pivot;
 
 	b = (t_listy **)malloc(sizeof(t_listy **));
 	if (size < 6)

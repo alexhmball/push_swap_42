@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 00:03:13 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 14:05:38 by ballzball        ###   ########.fr       */
+/*   Updated: 2022/08/28 17:06:52 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static int	find_node(t_listy **head, int content)
 {
 	t_listy	*temp;
 	int		i;
-	
+
 	i = 0;
 	temp = *head;
 	while (temp)
@@ -113,15 +113,17 @@ static int	find_node(t_listy **head, int content)
 	return (i);
 }
 
-int	big_sort(t_listy **a, t_listy **b, int median, int size)
+int	big_sort(t_listy **a, t_listy **b, int *nums, int size)
 {
 	t_listy	*temp_a;
 	int		top;
 	int		bottom;
 	int		sorted;
 	int		min;
+	int		i;
 
-	top = median;
+	i = 15;
+	top = nums[i];
 	bottom = find_max(a);
 	sorted = 0;
 	split_chunk(a, b, top, bottom);
@@ -129,7 +131,8 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 	min = find_min(b);
 	sort_algo(a, b);
 	bottom = top;
-	top -= 30;
+	i += 50;
+	top -= nums[i];
 	temp_a = *a;
 	while (sorted < size)
 	{
@@ -147,7 +150,10 @@ int	big_sort(t_listy **a, t_listy **b, int median, int size)
 		min = find_min(b);
 		sort_algo(a, b);
 		bottom = top;
-		top -= 30;
+		i += 50;
+		if (i > size)
+			i = size;
+		top -= nums[i];
 	}
 	return (size);
 }

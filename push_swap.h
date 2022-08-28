@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:55 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 14:23:20 by ballzball        ###   ########.fr       */
+/*   Updated: 2022/08/28 17:00:12 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		find_upper_half(t_listy **a, int median);
 char	*error_handler(int ac, char **av, char *nums);
 int		*check_duplicates(char **nums);
 void	check_and_error(int *numbers);
-int		big_sort(t_listy **a, t_listy **b, int median, int size);
+int		big_sort(t_listy **a, t_listy **b, int *nums, int size);
 int		split_list_lower(t_listy **a, t_listy **b, int median);
 void	sort_algo_push_small(t_listy **a, t_listy **b);
 

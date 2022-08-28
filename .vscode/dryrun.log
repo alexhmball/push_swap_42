@@ -1,6 +1,6 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/ballzball/Desktop/cursus/push_swap_experimental'
+make: Entering directory `/Users/aball/Desktop/Cursus/push_swap'
 make -C libft
 gcc -g -Wall -Wextra -Werror push_swap_utils.c main.c sorting.c push.c swap.c rotate.c algo.c check.c small_sort.c size.c find.c rotate_two.c error.c big_sort.c algo_p2.c libft/libft.a -o push_swap
-make: Leaving directory '/home/ballzball/Desktop/cursus/push_swap_experimental'
+make: Leaving directory `/Users/aball/Desktop/Cursus/push_swap'
  
