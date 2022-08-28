@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/01 19:45:41 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 20:33:23 by aball            ###   ########.fr       */
+/*   Created: 2022/08/28 18:51:22 by aball             #+#    #+#             */
+/*   Updated: 2022/08/28 21:00:43 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_b(t_listy **a_head, t_listy **b_head)
+void	lst_delone(t_listy *lst, void (*del)(void *))
 {
-	t_listy	*temp_a;
-
-	temp_a = *a_head;
-	if (temp_a->next)
-		*a_head = temp_a->next;
-	lst_add_front(b_head, new_lst(temp_a->content));
-	free(temp_a);
-	ft_printf("pb\n");
+	if (lst)
+		del(&lst->content);
 }
 
-void	push_a(t_listy **a_head, t_listy **b_head)
+void	lst_clear(t_listy **lst, void (*del)(void *))
 {
-	t_listy	*temp_b;
+	t_listy	*clear;
 
-	temp_b = *b_head;
-	*b_head = temp_b->next;
-	lst_add_front(a_head, new_lst(temp_b->content));
-	temp_b->next = NULL;
-	free(temp_b);
-	ft_printf("pa\n");
+	while (*lst)
+	{
+		clear = (*lst)->next;
+		lst_delone(*lst, del);
+		*lst = clear;
+	}
+}
+
+void	free_double(char **nums)
+{
+	int	i;
+
+	i = 0;
+	while (nums[i])
+		free(nums[i++]);
+	free (nums);
 }

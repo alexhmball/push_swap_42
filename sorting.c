@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:48 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 17:03:29 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/28 20:59:16 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static void	small_sort(t_listy **a, t_listy **b, int size)
 {
+	t_listy	*temp_b;
+
 	if (size == 2 && is_sorted_a(a) == 0)
 		swap_a(a);
 	else if (size == 3)
@@ -22,6 +24,15 @@ static void	small_sort(t_listy **a, t_listy **b, int size)
 		sort_four(a, b);
 	else if (size == 5)
 		sort_five(a, b);
+	if (size > 3)
+	{
+		temp_b = *b;
+		while (temp_b)
+		{
+			push_a(a, b);
+			temp_b = *b;
+		}
+	}
 }
 
 int	split_list_lower(t_listy **a, t_listy **b, int median)
@@ -87,10 +98,10 @@ int	*find_pivot(int *nums, int ac)
 void	sorting(t_listy **a, int size, int median, int *numbers)
 {
 	t_listy	**b;
-	t_listy	*temp_b;
 	int		*pivot;
 
 	b = (t_listy **)malloc(sizeof(t_listy **));
+	*b = NULL;
 	if (size < 6)
 		small_sort(a, b, size);
 	else
@@ -103,10 +114,5 @@ void	sorting(t_listy **a, int size, int median, int *numbers)
 			big_sort(a, b, pivot, size);
 		}
 	}
-	temp_b = *b;
-	while (temp_b)
-	{
-		push_a(a, b);
-		temp_b = *b;
-	}
+	free(b);
 }

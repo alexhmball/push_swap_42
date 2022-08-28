@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:35:21 by aball             #+#    #+#             */
-/*   Updated: 2022/08/27 21:16:38 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/28 18:32:30 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,21 @@ static void	rotate_down(t_listy **b, t_listy *temp_b)
 	{
 		rotate_b(b);
 		temp_b = *b;
+	}
+}
+
+void	bring_to_top(t_listy **a, int min, int size)
+{
+	t_listy	*temp_a;
+
+	temp_a = *a;
+	while (temp_a->content != min)
+	{
+		if (find_node(a, min) > size / 2)
+			rev_rotate_a(a);
+		else
+			rotate_a(a);
+		temp_a = *a;
 	}
 }
 

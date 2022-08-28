@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 22:52:25 by aball             #+#    #+#             */
-/*   Updated: 2022/08/24 22:58:18 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/28 22:03:41 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	print_error(int flag)
 		error = "Error\n";
 		write(2, error, 6);
 	}
-	exit (1);
 }
 
 int	*check_duplicates(char **nums)
@@ -42,7 +41,7 @@ int	*check_duplicates(char **nums)
 	i = 0;
 	while (nums[i])
 		i++;
-	numbers = (int *)malloc(i * sizeof(int *));
+	numbers = (int *)ft_calloc(i, sizeof(int *));
 	if (!numbers)
 		return (0);
 	i = 0;
@@ -63,15 +62,16 @@ char	*error_handler(int ac, char **av, char *nums)
 	if (ac < 2)
 	{
 		print_error(2);
-		exit (1);
+		exit (0);
 	}
 	nums = str_sep(ac - 1, av + 1, " ");
 	while (nums[i])
 	{
 		if (ft_isdigit(nums[i]) == 0 && nums[i] != ' ' && nums[i] != '-')
 		{
+			free (nums);
 			print_error(1);
-			exit (1);
+			exit (0);
 		}
 		i++;
 	}
@@ -91,8 +91,8 @@ void	check_and_error(int *numbers)
 		{
 			if (numbers[i] == numbers[x])
 			{
-				free(numbers);
 				print_error(3);
+				free(numbers);
 			}
 			x++;
 		}

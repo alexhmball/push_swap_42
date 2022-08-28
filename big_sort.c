@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 00:03:13 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 17:25:10 by ballzball        ###   ########.fr       */
+/*   Updated: 2022/08/28 18:38:51 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
 static int	find_nums(t_listy **a, int top, int bottom)
 {
-	t_listy *temp_a;
+	t_listy	*temp_a;
 
 	temp_a = *a;
 	while (temp_a)
@@ -37,7 +36,7 @@ static int	find_position(t_listy **a, int top, int bottom)
 	while (temp_a)
 	{
 		if (temp_a->content > top && temp_a->content <= bottom)
-			break;
+			break ;
 		i++;
 		temp_a = temp_a->next;
 	}
@@ -64,39 +63,7 @@ static void	split_chunk(t_listy **a, t_listy **b, int top, int bottom)
 	}
 }
 
-static int	find_max(t_listy **a)
-{
-	t_listy	*temp_a;
-	int		min;
-
-	min = INT_MIN;
-	temp_a = *a;
-	while (temp_a)
-	{
-		if (temp_a->content > min)
-			min = temp_a->content;
-		temp_a = temp_a->next;
-	}
-	return (min);
-}
-
-static int	find_min(t_listy **a)
-{
-	t_listy	*temp_a;
-	int		min;
-
-	min = INT_MAX;
-	temp_a = *a;
-	while (temp_a)
-	{
-		if (temp_a->content < min)
-			min = temp_a->content;
-		temp_a = temp_a->next;
-	}
-	return (min);
-}
-
-static int	find_node(t_listy **head, int content)
+int	find_node(t_listy **head, int content)
 {
 	t_listy	*temp;
 	int		i;
@@ -106,54 +73,35 @@ static int	find_node(t_listy **head, int content)
 	while (temp)
 	{
 		if (temp->content == content)
-			break;
+			break ;
 		i++;
 		temp = temp->next;
 	}
 	return (i);
 }
 
-int	big_sort(t_listy **a, t_listy **b, int *nums, int size)
+void	big_sort(t_listy **a, t_listy **b, int *nums, int size)
 {
-	t_listy	*temp_a;
-	int		top;
 	int		bottom;
-	int		sorted;
 	int		min;
 	int		i;
 
 	i = 15;
-	top = nums[i];
 	bottom = find_max(a);
-	sorted = 0;
-	split_chunk(a, b, top, bottom);
-	sorted += lst_size(*b);
+	split_chunk(a, b, nums[i], bottom);
 	min = find_min(b);
 	sort_algo(a, b);
-	bottom = top;
+	bottom = nums[i];
 	i += 30;
-	top = nums[i];
-	temp_a = *a;
-	while (sorted < size)
+	while (is_sorted_a(a) == 0)
 	{
-		split_chunk(a, b, top, bottom);
-		sorted += lst_size(*b);
-		temp_a = *a;
-		while (temp_a->content != min)
-		{
-			if (find_node(a, min) > size / 2)
-				rev_rotate_a(a);
-			else
-				rotate_a(a);
-			temp_a = *a;
-		}
+		split_chunk(a, b, nums[i], bottom);
+		bring_to_top(a, min, size);
 		min = find_min(b);
 		sort_algo(a, b);
-		bottom = top;
+		bottom = nums[i];
 		i += 30;
 		if (i > size)
 			i = size;
-		top = nums[i];
 	}
-	return (size);
 }

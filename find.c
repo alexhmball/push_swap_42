@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 22:39:00 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 14:17:28 by ballzball        ###   ########.fr       */
+/*   Updated: 2022/08/28 18:20:09 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,36 @@ int	find_upper_half(t_listy **a, int median)
 		temp_a = temp_a->next;
 	}
 	return (0);
+}
+
+int	find_max(t_listy **a)
+{
+	t_listy	*temp_a;
+	int		min;
+
+	min = INT_MIN;
+	temp_a = *a;
+	while (temp_a)
+	{
+		if (temp_a->content > min)
+			min = temp_a->content;
+		temp_a = temp_a->next;
+	}
+	return (min);
+}
+
+int	find_min(t_listy **a)
+{
+	t_listy	*temp_a;
+	int		min;
+
+	min = INT_MAX;
+	temp_a = *a;
+	while (temp_a)
+	{
+		if (temp_a->content < min)
+			min = temp_a->content;
+		temp_a = temp_a->next;
+	}
+	return (min);
 }
