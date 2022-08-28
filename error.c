@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 22:52:25 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 22:03:41 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/28 22:13:35 by ballzball        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,7 @@ char	*error_handler(int ac, char **av, char *nums)
 
 	i = 0;
 	if (ac < 2)
-	{
-		print_error(2);
 		exit (0);
-	}
 	nums = str_sep(ac - 1, av + 1, " ");
 	while (nums[i])
 	{
