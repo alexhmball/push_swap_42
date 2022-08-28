@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   big_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 00:03:13 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 17:10:30 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/28 17:25:10 by ballzball        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ int	big_sort(t_listy **a, t_listy **b, int *nums, int size)
 	sort_algo(a, b);
 	bottom = top;
 	i += 30;
-	top -= nums[i];
+	top = nums[i];
 	temp_a = *a;
 	while (sorted < size)
 	{
@@ -153,7 +153,7 @@ int	big_sort(t_listy **a, t_listy **b, int *nums, int size)
 		i += 30;
 		if (i > size)
 			i = size;
-		top -= nums[i];
+		top = nums[i];
 	}
 	return (size);
 }
