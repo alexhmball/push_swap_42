@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:55 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 23:03:02 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/29 01:00:25 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		find_nums_left(t_listy **a, int median);
 int		find_upper_half(t_listy **a, int median);
 char	*error_handler(int ac, char **av, char *nums);
 int		*check_duplicates(char **nums);
-void	check_and_error(int *numbers);
+int		check_and_error(int *numbers);
 void	big_sort(t_listy **a, t_listy **b, int *nums, int size);
 int		split_list_lower(t_listy **a, t_listy **b, int median);
 void	sort_algo_push_small(t_listy **a, t_listy **b);

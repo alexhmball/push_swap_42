@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+        */
+/*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 22:52:25 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 22:13:35 by ballzball        ###   ########.fr       */
+/*   Updated: 2022/08/29 00:59:29 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,11 @@ int	*check_duplicates(char **nums)
 		numbers[i] = ft_atoi(nums[i]);
 		i++;
 	}
-	check_and_error(numbers);
+	if (!check_and_error(numbers))
+	{
+		free_double(nums);
+		exit (0);
+	}
 	return (numbers);
 }
 
@@ -75,7 +79,7 @@ char	*error_handler(int ac, char **av, char *nums)
 	return (nums);
 }
 
-void	check_and_error(int *numbers)
+int	check_and_error(int *numbers)
 {
 	int	i;
 	int	x;
@@ -90,9 +94,11 @@ void	check_and_error(int *numbers)
 			{
 				print_error(3);
 				free(numbers);
+				return (0);
 			}
 			x++;
 		}
 		i++;
 	}
+	return (1);
 }

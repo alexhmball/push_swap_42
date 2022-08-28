@@ -6,7 +6,7 @@
 #    By: aball <aball@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/21 01:47:33 by aball             #+#    #+#              #
-#    Updated: 2022/08/28 23:29:26 by aball            ###   ########.fr        #
+#    Updated: 2022/08/28 23:39:50 by aball            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS = $(addprefix srcs/, ${FILES})
 
 $(NAME): all
 
-all: libft ${SRCS}
+all: libft
 	gcc -Wall -Wextra -Werror ${SRCS} libft/libft.a -o ${NAME}
 
 libft:
