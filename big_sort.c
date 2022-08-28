@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 00:03:13 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 17:06:52 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/28 17:10:30 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int	big_sort(t_listy **a, t_listy **b, int *nums, int size)
 	min = find_min(b);
 	sort_algo(a, b);
 	bottom = top;
-	i += 50;
+	i += 30;
 	top -= nums[i];
 	temp_a = *a;
 	while (sorted < size)
@@ -150,7 +150,7 @@ int	big_sort(t_listy **a, t_listy **b, int *nums, int size)
 		min = find_min(b);
 		sort_algo(a, b);
 		bottom = top;
-		i += 50;
+		i += 30;
 		if (i > size)
 			i = size;
 		top -= nums[i];
