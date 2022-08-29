@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aball <aball@student.42.fr>                +#+  +:+       +#+         #
+#    By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/21 01:47:33 by aball             #+#    #+#              #
-#    Updated: 2022/08/28 23:39:50 by aball            ###   ########.fr        #
+#    Updated: 2022/08/29 16:44:51 by ballzball        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,18 +17,28 @@ FILES = push_swap_utils.c main.c sorting.c push.c swap.c rotate.c algo.c check.c
 
 SRCS = $(addprefix srcs/, ${FILES})
 
-$(NAME): all
+OBJS = ${SRCS:c=o}
 
-all: libft
-	gcc -Wall -Wextra -Werror ${SRCS} libft/libft.a -o ${NAME}
+CC = gcc
+
+FLAGS = -Wall -Wextra -Werror
+
+all: libft $(NAME)
+
+$(NAME): ${OBJS}
+	$(CC) $^ libft/libft.a -o $@
+
+%.o: %.c
+		${CC} ${FLAGS} -c $< -o ${<:c=o}
 
 libft:
 	make -C libft
 
 clean:
 	make clean -C libft
+	rm -fr ${OBJS}
 
-fclean:
+fclean: clean
 	rm -fr $(NAME)
 	make fclean -C libft
 
