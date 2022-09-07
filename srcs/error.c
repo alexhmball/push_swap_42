@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 22:52:25 by aball             #+#    #+#             */
-/*   Updated: 2022/09/07 21:35:31 by aball            ###   ########.fr       */
+/*   Updated: 2022/09/07 22:11:07 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ int	char_to_int(char *str, char **nums, int *numbers)
 
 	r = 0;
 	s = 1;
-	if (*str == '-')
+	if (*str == '-' || *str == '+')
 	{
-		s *= -1;
+		if (*str == '-')
+			s *= -1;
 		str++;
 	}
 	while (*str >= '0' && *str <= '9')
@@ -93,7 +94,8 @@ char	*error_handler(int ac, char **av, char *nums)
 	nums = str_sep(ac - 1, av + 1, " ");
 	while (nums[i])
 	{
-		if (ft_isdigit(nums[i]) == 0 && nums[i] != ' ' && nums[i] != '-')
+		if (ft_isdigit(nums[i]) == 0 && nums[i] != ' ' && nums[i] != '-'
+			&& nums[i] != '+')
 		{
 			free (nums);
 			print_error(1);

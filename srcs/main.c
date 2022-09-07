@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 22:30:30 by aball             #+#    #+#             */
-/*   Updated: 2022/09/07 17:42:47 by aball            ###   ########.fr       */
+/*   Updated: 2022/09/07 22:09:33 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	check_negative(char **nums, int i)
 			print_error(1);
 			exit (0);
 		}
-		else if (j == 0 && nums[i][j] == '-'
+		else if (j == 0 && (nums[i][j] == '-' || nums[i][j] == '+')
 			&& ft_isdigit(nums[i][j + 1]) == 0)
 		{
 			free_double(nums, 0);
