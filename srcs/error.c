@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 22:52:25 by aball             #+#    #+#             */
-/*   Updated: 2022/09/07 17:42:16 by aball            ###   ########.fr       */
+/*   Updated: 2022/09/07 21:35:31 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	*check_duplicates(char **nums, int size)
 		numbers[i] = char_to_int(nums[i], nums, numbers);
 		i++;
 	}
-	if (!check_and_error(numbers, size))
+	if (!check_and_error(numbers, size, nums))
 		free_double(nums, 1);
 	return (numbers);
 }
@@ -104,7 +104,7 @@ char	*error_handler(int ac, char **av, char *nums)
 	return (nums);
 }
 
-int	check_and_error(int *numbers, int size)
+int	check_and_error(int *numbers, int size, char **nums)
 {
 	int	i;
 	int	x;
@@ -118,6 +118,7 @@ int	check_and_error(int *numbers, int size)
 			if (numbers[i] == numbers[x])
 			{
 				print_error(3);
+				free_double(nums, 0);
 				free(numbers);
 				exit (0);
 			}
