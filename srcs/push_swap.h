@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:55 by aball             #+#    #+#             */
-/*   Updated: 2022/09/05 21:22:30 by aball            ###   ########.fr       */
+/*   Updated: 2022/09/07 17:42:53 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ void	bring_to_top(t_listy **a, int min, int size);
 int		find_node(t_listy **head, int content);
 void	lst_delone(t_listy *lst, void (*del)(void *));
 void	lst_clear(t_listy **lst, void (*del)(void *));
-void	free_double(char **nums);
+void	free_double(char **nums, int error);
 
 #endif

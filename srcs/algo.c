@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:35:21 by aball             #+#    #+#             */
-/*   Updated: 2022/09/07 16:18:46 by aball            ###   ########.fr       */
+/*   Updated: 2022/09/07 17:10:35 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	bring_to_top(t_listy **a, int min, int size)
 	temp_a = *a;
 	while (temp_a->content != min)
 	{
-		// printf("%d   %d\n", min, temp_a->content);
 		if (find_node(a, min) > size / 2)
 			rev_rotate_a(a);
 		else

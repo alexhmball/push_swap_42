@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 22:52:25 by aball             #+#    #+#             */
-/*   Updated: 2022/09/05 21:23:07 by aball            ###   ########.fr       */
+/*   Updated: 2022/09/07 17:42:16 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	char_to_int(char *str, char **nums, int *numbers)
 		if (r * s > INT_MAX || (r * s) < INT_MIN)
 		{
 			write(2, "Error\n", 6);
-			free_double(nums);
+			free_double(nums, 0);
 			free(numbers);
 			exit (0);
 		}
@@ -79,10 +79,7 @@ int	*check_duplicates(char **nums, int size)
 		i++;
 	}
 	if (!check_and_error(numbers, size))
-	{
-		free_double(nums);
-		exit (0);
-	}
+		free_double(nums, 1);
 	return (numbers);
 }
 
@@ -118,7 +115,6 @@ int	check_and_error(int *numbers, int size)
 		x = i + 1;
 		while (x < size)
 		{
-			// ft_printf("%d  %d\n", numbers[i], numbers[x]);
 			if (numbers[i] == numbers[x])
 			{
 				print_error(3);

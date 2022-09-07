@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 22:30:30 by aball             #+#    #+#             */
-/*   Updated: 2022/09/05 21:28:40 by aball            ###   ########.fr       */
+/*   Updated: 2022/09/07 17:42:47 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ static void	check_negative(char **nums, int i)
 	{
 		if (j != 0 && ft_isdigit(nums[i][j]) == 0)
 		{
-			free_double(nums);
+			free_double(nums, 0);
 			print_error(1);
 			exit (0);
 		}
 		else if (j == 0 && nums[i][j] == '-'
 			&& ft_isdigit(nums[i][j + 1]) == 0)
 		{
-			free_double(nums);
+			free_double(nums, 0);
 			print_error(1);
 			exit (0);
 		}
@@ -87,12 +87,9 @@ int	main(int ac, char **av)
 	free (nums);
 	ac = count_nums(only_nums);
 	if (ac == 0)
-	{
-		free_double(only_nums);
-		exit (0);
-	}
+		free_double(only_nums, 1);
 	numbers = check_duplicates(only_nums, ac);
-	free_double(only_nums);
+	free_double(only_nums, 0);
 	a = create_list(numbers, ac);
 	median = find_median(numbers, ac);
 	if (is_sorted_a(&a) == 0)

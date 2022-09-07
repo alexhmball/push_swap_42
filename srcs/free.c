@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 18:51:22 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 21:00:43 by aball            ###   ########.fr       */
+/*   Updated: 2022/09/07 17:40:53 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	lst_clear(t_listy **lst, void (*del)(void *))
 	}
 }
 
-void	free_double(char **nums)
+void	free_double(char **nums, int error)
 {
 	int	i;
 
@@ -38,4 +38,6 @@ void	free_double(char **nums)
 	while (nums[i])
 		free(nums[i++]);
 	free (nums);
+	if (error)
+		exit (0);
 }
