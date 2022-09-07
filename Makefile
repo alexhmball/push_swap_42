@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ballzball <ballzball@student.42.fr>        +#+  +:+       +#+         #
+#    By: aball <aball@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/21 01:47:33 by aball             #+#    #+#              #
-#    Updated: 2022/08/29 16:44:51 by ballzball        ###   ########.fr        #
+#    Updated: 2022/09/05 18:56:06 by aball            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJS = ${SRCS:c=o}
 
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -g -Wall -Wextra -Werror
 
 all: libft $(NAME)
 

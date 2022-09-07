@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 17:22:48 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 20:59:16 by aball            ###   ########.fr       */
+/*   Updated: 2022/09/02 18:34:57 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ void	sorting(t_listy **a, int size, int median, int *numbers)
 		small_sort(a, b, size);
 	else
 	{
-		if (size <= 50)
+		if (size <= 50 && is_sorted_a(a) == 0)
 			medium_sort(a, b, median);
-		else
+		else if (is_sorted_a(a) == 0)
 		{
 			pivot = find_pivot(numbers, size);
 			big_sort(a, b, pivot, size);

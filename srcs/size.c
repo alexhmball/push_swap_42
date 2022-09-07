@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 22:27:23 by aball             #+#    #+#             */
-/*   Updated: 2022/08/24 22:46:06 by aball            ###   ########.fr       */
+/*   Updated: 2022/09/02 16:03:01 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	is_smallest(t_listy **a, t_listy *node)
 	t_listy	*current;
 
 	current = *a;
+	if (!*a)
+		return (0);
 	while (current)
 	{
 		if (current->content < node->content)

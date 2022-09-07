@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 22:52:25 by aball             #+#    #+#             */
-/*   Updated: 2022/08/29 00:59:29 by aball            ###   ########.fr       */
+/*   Updated: 2022/09/05 21:23:07 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,35 @@ void	print_error(int flag)
 	}
 }
 
-int	*check_duplicates(char **nums)
+int	char_to_int(char *str, char **nums, int *numbers)
+{
+	int		s;
+	long	r;
+
+	r = 0;
+	s = 1;
+	if (*str == '-')
+	{
+		s *= -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		r *= 10;
+		r += *str - '0';
+		str++;
+		if (r * s > INT_MAX || (r * s) < INT_MIN)
+		{
+			write(2, "Error\n", 6);
+			free_double(nums);
+			free(numbers);
+			exit (0);
+		}
+	}
+	return (r * s);
+}
+
+int	*check_duplicates(char **nums, int size)
 {
 	int	i;
 	int	*numbers;
@@ -47,10 +75,10 @@ int	*check_duplicates(char **nums)
 	i = 0;
 	while (nums[i])
 	{
-		numbers[i] = ft_atoi(nums[i]);
+		numbers[i] = char_to_int(nums[i], nums, numbers);
 		i++;
 	}
-	if (!check_and_error(numbers))
+	if (!check_and_error(numbers, size))
 	{
 		free_double(nums);
 		exit (0);
@@ -79,22 +107,23 @@ char	*error_handler(int ac, char **av, char *nums)
 	return (nums);
 }
 
-int	check_and_error(int *numbers)
+int	check_and_error(int *numbers, int size)
 {
 	int	i;
 	int	x;
 
 	i = 0;
-	while (numbers[i])
+	while (i < size)
 	{
 		x = i + 1;
-		while (numbers[x])
+		while (x < size)
 		{
+			// ft_printf("%d  %d\n", numbers[i], numbers[x]);
 			if (numbers[i] == numbers[x])
 			{
 				print_error(3);
 				free(numbers);
-				return (0);
+				exit (0);
 			}
 			x++;
 		}

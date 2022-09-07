@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 19:40:09 by aball             #+#    #+#             */
-/*   Updated: 2022/08/24 22:51:21 by aball            ###   ########.fr       */
+/*   Updated: 2022/09/02 16:26:07 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	rotate_a(t_listy **head)
 	t_listy	*temp;
 
 	temp = *head;
-	*head = temp->next;
-	temp->next = NULL;
+	*head = (*head)->next;
 	lst_add_back(head, new_lst(temp->content));
+	temp->next = NULL;
 	free(temp);
 	ft_printf("ra\n");
 }
@@ -30,8 +30,8 @@ void	rotate_b(t_listy **head)
 
 	temp = *head;
 	*head = temp->next;
-	temp->next = NULL;
 	lst_add_back(head, new_lst(temp->content));
+	temp->next = NULL;
 	free(temp);
 	ft_printf("rb\n");
 }

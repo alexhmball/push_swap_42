@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 16:33:49 by aball             #+#    #+#             */
-/*   Updated: 2022/08/24 22:32:43 by aball            ###   ########.fr       */
+/*   Updated: 2022/08/31 20:59:41 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static void	error_message(long r, int s)
 	if (r > INT_MAX || r * s < INT_MIN)
 	{
 		write(2, "Error\n", 6);
-		exit (1);
 	}
 }
 

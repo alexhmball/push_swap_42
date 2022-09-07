@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 20:18:57 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 20:59:30 by aball            ###   ########.fr       */
+/*   Updated: 2022/09/02 19:23:45 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ void	sort_three(t_listy **a)
 			swap_a(a);
 		rev_rotate_a(a);
 	}
-	if (is_smallest(a, temp_a->next))
+	else if (is_smallest(a, temp_a->next))
 	{
 		if (temp_a->content < lst_last(a)->content)
 			swap_a(a);
 		else
 			rotate_a(a);
 	}
-	if (is_smallest(a, temp_a) && is_sorted_a(a) == 0)
+	else if (is_smallest(a, temp_a) && is_sorted_a(a) == 0)
 	{
 		rotate_a(a);
 		swap_a(a);

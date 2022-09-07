@@ -6,7 +6,7 @@
 /*   By: aball <aball@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 00:03:13 by aball             #+#    #+#             */
-/*   Updated: 2022/08/28 18:38:51 by aball            ###   ########.fr       */
+/*   Updated: 2022/09/07 16:13:07 by aball            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,10 @@ void	big_sort(t_listy **a, t_listy **b, int *nums, int size)
 	i += 30;
 	while (is_sorted_a(a) == 0)
 	{
+
 		split_chunk(a, b, nums[i], bottom);
+		if (lst_size(*b) == 0)
+			break ;
 		bring_to_top(a, min, size);
 		min = find_min(b);
 		sort_algo(a, b);
