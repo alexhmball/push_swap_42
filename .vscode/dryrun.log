@@ -1,8 +1,0 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory `/Users/aball/Desktop/Cursus/push_swap'
-make -C libft
- 
-gcc -Wall -Wextra -Werror srcs/push_swap_utils.o srcs/main.o srcs/sorting.o srcs/push.o srcs/swap.o srcs/rotate.o srcs/algo.o srcs/check.o srcs/small_sort.o srcs/size.o srcs/find.o srcs/rotate_two.o srcs/error.o srcs/big_sort.o srcs/free.o libft/libft.a -o push_swap
- 
-make: Leaving directory `/Users/aball/Desktop/Cursus/push_swap'
- 
