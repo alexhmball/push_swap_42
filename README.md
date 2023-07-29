@@ -15,8 +15,11 @@ Push_swap allowed me to achieve the following learning goals:
 The mandatory part of the project required the following:
 
 Program Name: push_swap
+
 Turn in Files: Makefile, *.h, *.c
+
 Arguments: NAME, all, clean, fclean, re
+
 The project involved two stacks, named "a" and "b," each containing a random amount of negative and/or positive numbers without duplicates at the beginning. The main goal was to sort the numbers in stack "a" in ascending order using specific operations on the stacks.
 
 The following instructions were available to manipulate the stacks:
